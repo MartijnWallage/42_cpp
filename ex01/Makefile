@@ -1,24 +1,25 @@
 CPP		:= c++
 FLAGS	:= -std=c++98 -Wall -Wextra -Werror
 SRC		:= PhoneBook.cpp Contact.cpp main.cpp
+HPP		:= PhoneBook.hpp Contact.hpp
 OBJ		:= $(SRC:.cpp=.o)
 EXEC	:= PhoneBook
 
-all : $(EXEC)
+all: $(EXEC)
 
-$(EXEC)	: $(OBJ)
+$(EXEC): $(OBJ) $(HPP)
 	$(CPP) $(FLAGS) $^ -o $@
 
-%.o	: %.cpp %.hpp
+%.o: %.cpp
 	$(CPP) $(FLAGS) -c $< -o $@
 
-clean	:
+clean:
 	rm -f *.o
 
-fclean	: clean
+fclean: clean
 	rm -f $(EXEC)
 
-re	: fclean
+re: fclean
 	make
 
-.PHONY	: all, clean, fclean, re
+.PHONY: all, clean, fclean, re

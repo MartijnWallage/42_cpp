@@ -9,23 +9,23 @@ void	PhoneBook::addContact() {
 	std::string input;
 
 	std::cout << "Enter first name: ";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	contacts[index].setFirstName(input);
 
 	std::cout << "Enter last name: ";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	contacts[index].setLastName(input);
 
 	std::cout << "Enter nickname: ";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	contacts[index].setNickname(input);
 
 	std::cout << "Enter phone number: ";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	contacts[index].setPhoneNumber(input);
 
 	std::cout << "Enter darkest secret: ";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	contacts[index].setSecret(input);
 
 	contact_count++;
@@ -37,8 +37,8 @@ void	PhoneBook::displayContacts() const {
 	std::cout << std::right << std::setw(10) << "First name" << " | ";
 	std::cout << std::right << std::setw(10) << "Last name" << " | ";
 	std::cout << std::right << std::setw(10) << "Nickname" << " | ";
-	std::cout << std::right << std::setw(10) << "Phone number" << " | ";
-	std::cout << std::right << std::setw(10) << "Darkest secret" << " | " << std::endl;
+	std::cout << std::right << std::setw(10) << "Phone" << " | ";
+	std::cout << std::right << std::setw(10) << "Secret" << " | " << std::endl;
 	for (int i = 0; i < contact_count; i++) {
 		std::cout << std::right << std::setw(10) << i << " | ";
 		std::cout << std::right << std::setw(10) << truncateName(contacts[i].getFirstName()) << " | ";
