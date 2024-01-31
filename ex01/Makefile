@@ -1,10 +1,10 @@
-CPP	:= c++
+CPP		:= c++
 FLAGS	:= -std=c++98 -Wall -Wextra -Werror
-SRC	:= PhoneBook.cpp, Contact.cpp
-OBJ	:= $(SRC:.cpp=.o)
+SRC		:= PhoneBook.cpp Contact.cpp main.cpp
+OBJ		:= $(SRC:.cpp=.o)
 EXEC	:= PhoneBook
 
-all : $EXEC
+all : $(EXEC)
 
 $(EXEC)	: $(OBJ)
 	$(CPP) $(FLAGS) $^ -o $@

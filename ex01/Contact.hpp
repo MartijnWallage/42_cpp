@@ -6,17 +6,24 @@
 class	Contact {
 public:
 	Contact();
-	Contact(string, string, string, string, int);
-	Contact getContact() const;
-	void setContact(string, string, string, string, int);
-	void displayContact(Contact) const;
+	void setFirstName(const std::string& fname);
+	void setLastName(const std::string& lname);
+	void setNickname(const std::string& nname);
+	void setPhoneNumber(const std::string& pnumber);
+	void setSecret(const std::string& secret);
+	std::string getFirstName() const;
+	std::string getLastName() const;
+	std::string getNickname() const;
+	std::string getPhoneNumber() const;
+	std::string getSecret() const;
+	void displayContact() const;
 	~Contact();
 private:
-	string	firstname,
-			lastname, 
-			nickname, 
-			secret;
-	int		phonenumber;
+	std::string first_name,
+				last_name, 
+				nickname, 
+				secret,
+				phone_number;
 };
 
 #endif

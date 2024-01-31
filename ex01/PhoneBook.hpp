@@ -6,12 +6,19 @@
 class	PhoneBook {
 public:
 	PhoneBook();
-	PhoneBook(Contact[8]);
-	Contact getContact(PhoneBook phonebook, int index) const;
-	void setContact(PhoneBook phonebook);
+	void addContact();
+	void searchContact() const;
+	void displayContacts() const;
 	~PhoneBook();
 private:
-	Contact	book[8];
+	Contact		contacts[8];
+	int			contact_count;
+	std::string	truncateName(const std::string& str) const {
+		if (str.length() > 10) {
+			return str.substr(0, 9) + ".";
+		}
+		return str;
+	}
 };
 
 #endif
