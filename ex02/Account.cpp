@@ -40,7 +40,7 @@ void	Account::_displayTimestamp() {
 
 	std::cout 	<< "[" << (now->tm_year + 1900)
 				<< (now->tm_mon + 1 < 10 ? "0" : "") << now->tm_mon + 1
-				<< (now->tm_mday + 1 < 10 ? "0" : "") << now->tm_mday + 1
+				<< (now->tm_mday < 10 ? "0" : "") << now->tm_mday + 1
 				<< "_" << (now->tm_hour < 10 ? "0" : "") << now->tm_hour
 				<< (now->tm_min < 10 ? "0" : "") << now->tm_min
 				<< (now->tm_sec < 10 ? "0" : "") << now->tm_sec 
