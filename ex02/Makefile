@@ -1,16 +1,16 @@
 CPP		:= c++
 FLAGS	:= -std=c++98 -Wall -Wextra -Werror
-SRC		:= Account.cpp test.cpp
+SRC		:= Account.cpp tests.cpp
 HPP		:= Account.hpp
 OBJ		:= $(SRC:.cpp=.o)
 EXEC	:= Account
 
 all: $(EXEC)
 
-$(EXEC): $(OBJ) $(HPP)
+$(EXEC): $(OBJ)
 	$(CPP) $(FLAGS) $^ -o $@
 
-%.o: %.cpp
+%.o: %.cpp $(HPP)
 	$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
