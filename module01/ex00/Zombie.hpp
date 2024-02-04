@@ -1,5 +1,5 @@
-#ifndef __ZOMBIE_HPP__
-# define __ZOMBIE_HPP__
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 # include <string>
 
