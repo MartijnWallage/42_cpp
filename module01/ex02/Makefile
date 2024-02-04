@@ -1,9 +1,8 @@
 CPP		:= c++
 FLAGS	:= -std=c++98 -Wall -Wextra -Werror
-SRC		:= main.cpp Zombie.cpp zombieHorde.cpp
-HPP		:= Zombie.hpp
+SRC		:= main.cpp
 OBJ		:= $(SRC:.cpp=.o)
-EXEC	:= ZombieHorde
+EXEC	:= Brain
 
 all: $(EXEC)
 
