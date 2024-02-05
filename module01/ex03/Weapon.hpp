@@ -1,6 +1,4 @@
-
-#ifndef WEAPON_HPP
-#define WEAPON_HPP
+#pragma	once
 
 #include <string>
 
@@ -12,5 +10,3 @@ class Weapon {
 	private:
 		std::string	type;
 };
-
-#endif

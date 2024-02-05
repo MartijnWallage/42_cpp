@@ -1,5 +1,4 @@
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#pragma	once
 
 #include "Contact.hpp"
 
@@ -21,4 +20,3 @@ private:
 	}
 };
 
-#endif

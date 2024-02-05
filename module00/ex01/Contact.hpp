@@ -1,5 +1,4 @@
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#pragma	once
 
 #include <string>
 
@@ -25,5 +24,3 @@ private:
 				secret,
 				phone_number;
 };
-
-#endif
