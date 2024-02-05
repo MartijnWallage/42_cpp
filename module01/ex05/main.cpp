@@ -7,7 +7,7 @@ int main() {
     harl.complain("INFO");
     harl.complain("WARNING");
     harl.complain("ERROR");
-    harl.complain("UNKNOWN");  // This won't match any level and thus won't trigger any complaint
-
+    harl.complain("UNKNOWN");
+	
     return 0;
 }
