@@ -3,7 +3,7 @@ FLAGS	:= -std=c++98 -Wall -Wextra -Werror
 SRC		:= main.cpp Harl.cpp
 OBJ		:= $(SRC:.cpp=.o)
 HPP		:= Harl.hpp
-EXEC	:= Harl
+EXEC	:= harlFilter
 
 all: $(EXEC)
 

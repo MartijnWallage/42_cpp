@@ -13,18 +13,9 @@ void	Harl::complain( std::string type ) {
 
 }
 
-int	Harl::getLevel( std::string type ) const {
-
-	for (int i = 0; i < 4; i++) {
-		if (levels[i] == type)
-			return i;
-	}
-
-	return 4;
-
-}
 
 Harl::Harl( void ) {
+
 	complaints[0] = &Harl::debug;
 	complaints[1] = &Harl::info;
 	complaints[2] = &Harl::warning;
@@ -42,11 +33,23 @@ Harl::~Harl( void ) {}
 
 //	Private functions
 
+int	Harl::getLevel( std::string type ) const {
+
+	for (int i = 0; i < 4; i++) {
+		if (levels[i] == type)
+			return i;
+	}
+
+	return 4;
+
+}
+
 void	Harl::unknown( void ) {
 
 	std::cout << "I'm unhappy but I don't know why!" << std::endl;
 
 }
+
 void	Harl::debug( void ) {
 
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
