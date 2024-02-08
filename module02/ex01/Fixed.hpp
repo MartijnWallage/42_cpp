@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class Fixed {
 private:
@@ -15,6 +16,6 @@ public:
 	~Fixed( void );
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
-	friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
+	friend std::ostream&	operator<<(std::ostream& os, const Fixed& obj);
 };
 
