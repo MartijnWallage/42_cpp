@@ -2,13 +2,13 @@
 
 class Fixed {
 private:
-	int	number;
+	int					value;
 	static const int	frac_bits = 8;
 public:
-	Fixed();
-	Fixed(int orig);
-	Fixed& operator=(const Fixed& other);
-	~Fixed();
+	Fixed( void );
+	Fixed( const Fixed& obj );
+	Fixed& operator=( const Fixed& other );
+	~Fixed( void );
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
 };
