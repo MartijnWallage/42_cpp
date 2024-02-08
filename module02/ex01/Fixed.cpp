@@ -19,7 +19,7 @@ Fixed::Fixed( const Fixed& obj ) {
 Fixed::Fixed( const int intValue ) {
 
 	std::cout << "Int constructor called" << std::endl;
-	this->value = intValue << this->fracSize;
+	this->value = intValue << fracSize;
 
 }
 
@@ -28,14 +28,14 @@ Fixed::Fixed( const float floatValue ) {
 	std::cout << "Float constructor called" << std::endl;
 	int		intPart = static_cast<int>(roundf(floatValue));
 	float	fracPart = floatValue - intPart;
-	int		fixedFracPart = static_cast<int>(fracPart * 256);
-	this->value = (intPart << 8) | (fixedFracPart);
+	int		fixedFracPart = static_cast<int>(roundf(fracPart * 256));
+
+	value = (intPart << 8) | (fixedFracPart);
 }
 
 float	Fixed::toFloat( void ) const {
 
-	int		frac_bits = this->value;
-	return 	static_cast<float>(frac_bits) / (1 << this->fracSize);
+	return 	static_cast<float>(value) / (1 << fracSize);
 
 }
 
