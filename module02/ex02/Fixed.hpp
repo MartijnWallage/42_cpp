@@ -16,12 +16,12 @@ public:
 	int		toInt( void ) const;
 
 	Fixed&	operator=( const Fixed& other );
-	int		operator>( const Fixed& other ) const;
-	int		operator<( const Fixed& other ) const;
-	int		operator>=( const Fixed& other ) const;
-	int		operator<=( const Fixed& other ) const;
-	int		operator==( const Fixed& other ) const;
-	int		operator!=( const Fixed& other ) const;
+	bool	operator>( const Fixed& other ) const;
+	bool	operator<( const Fixed& other ) const;
+	bool	operator>=( const Fixed& other ) const;
+	bool	operator<=( const Fixed& other ) const;
+	bool	operator==( const Fixed& other ) const;
+	bool	operator!=( const Fixed& other ) const;
 	Fixed&	operator++( void );
 	Fixed	operator++( int );
 	Fixed&	operator--( void );

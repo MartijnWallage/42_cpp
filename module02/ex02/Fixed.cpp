@@ -58,27 +58,27 @@ Fixed& Fixed::operator=( const Fixed& other ) {
 	return *this;
 }
 
-int		Fixed::operator>( const Fixed& other ) const {
+bool	Fixed::operator>( const Fixed& other ) const {
 	return value > other.value;
 }
 
-int		Fixed::operator<( const Fixed& other ) const {
+bool	Fixed::operator<( const Fixed& other ) const {
 	return value < other.value;
 }
 
-int		Fixed::operator>=( const Fixed& other ) const {
+bool	Fixed::operator>=( const Fixed& other ) const {
 	return value >= other.value;
 }
 
-int		Fixed::operator<=( const Fixed& other ) const {
+bool	Fixed::operator<=( const Fixed& other ) const {
 	return value <= other.value;
 }
 
-int		Fixed::operator==( const Fixed& other ) const {
+bool	Fixed::operator==( const Fixed& other ) const {
 	return value == other.value;
 }
 
-int		Fixed::operator!=( const Fixed& other ) const {
+bool	Fixed::operator!=( const Fixed& other ) const {
 	return value != other.value;
 }
 
@@ -91,7 +91,9 @@ Fixed	Fixed::operator-( const Fixed& other ) const {
 }
 
 Fixed	Fixed::operator*( const Fixed& other ) const {
-	int64_t	result = static_cast<int64_t>(value) * other.value;
+
+	int64_t	result = static_cast<int64_t>(value);
+	result *= static_cast<int64_t>(other.value);
 	result >>= 16;
 	return Fixed(static_cast<int>(result));
 }
