@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/22 14:21:11 by mwallage          #+#    #+#             */
+/*   Updated: 2024/02/22 14:21:18 by mwallage         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Harl.hpp"
 #include <string>
 #include <iostream>
 
 //	Public functions
-
 
 void	Harl::complain( std::string type ) {
 
@@ -12,7 +23,6 @@ void	Harl::complain( std::string type ) {
 	(this->*complaints[level])();
 
 }
-
 
 Harl::Harl( void ) {
 
