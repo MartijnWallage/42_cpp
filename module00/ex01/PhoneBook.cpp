@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:18 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/24 08:31:09 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:08:35 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 PhoneBook::PhoneBook() : contact_count(0) {}
 
-std::string	truncateName(const std::string& str) {
+std::string	PhoneBook::truncateName(const std::string& str) const {
 	if (str.length() > 10) {
 		return str.substr(0, 9) + ".";
 	}

@@ -6,7 +6,7 @@
 #    By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 14:18:10 by mwallage          #+#    #+#              #
-#    Updated: 2024/02/24 08:50:40 by mwallage         ###   ########.fr        #
+#    Updated: 2024/02/24 16:14:51 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ EXEC	:= PhoneBook
 
 all: $(EXEC)
 
-$(EXEC): $(OBJ) $(HPP)
+$(EXEC): $(OBJ)
 	$(CPP) $(FLAGS) $^ -o $@
 
-%.o: %.cpp
+%.o: %.cpp $(HPP)
 	$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
