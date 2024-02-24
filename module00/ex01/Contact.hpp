@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:00 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:18:03 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/24 08:41:15 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma	once
-
 #include <string>
 
 class	Contact {

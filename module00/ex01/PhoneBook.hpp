@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:23 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:18:26 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/24 08:41:21 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma	once
-
 #include "Contact.hpp"
 
 class	PhoneBook {
@@ -24,11 +23,5 @@ public:
 private:
 	Contact		contacts[8];
 	int			contact_count;
-	std::string	truncateName(const std::string& str) const {
-		if (str.length() > 10) {
-			return str.substr(0, 9) + ".";
-		}
-		return str;
-	}
+	std::string	truncateName(const std::string& str) const;
 };
-

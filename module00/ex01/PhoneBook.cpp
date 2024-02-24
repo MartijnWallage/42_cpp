@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:18 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:18:20 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/24 08:31:09 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 #include <iostream>
 #include <iomanip>
 
+// Private
+
 PhoneBook::PhoneBook() : contact_count(0) {}
+
+std::string	truncateName(const std::string& str) {
+	if (str.length() > 10) {
+		return str.substr(0, 9) + ".";
+	}
+	return str;
+}
+
+//	Public
 
 void	PhoneBook::addContact() {
 	int index = contact_count;
