@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:49 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/24 16:31:43 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/24 17:07:11 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 class Fixed {
 private:
-	int					value;
-	static const int	fracSize = 8;
+	int					_value;
+	static const int	_fracSize = 8;
 public:
 	Fixed( void );
 	Fixed( const Fixed& obj );
@@ -51,6 +51,6 @@ public:
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
 
-	friend std::ostream&	operator<<(std::ostream& os, const Fixed& obj);
 };
 
+std::ostream&	operator<<(std::ostream& os, const Fixed& obj);
