@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:49 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:22:51 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:31:43 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,10 @@ public:
 	Fixed	operator*( const Fixed& other ) const;
 	Fixed	operator/( const Fixed& other ) const;
 
-	static Fixed&		min(Fixed&, Fixed&);
-	static const Fixed&	min(const Fixed&, const Fixed&);
-	static const Fixed&	min(const Fixed&, Fixed&);
-	static const Fixed&	min(Fixed&, const Fixed&);
-	static Fixed&		max(Fixed&, Fixed&);
-	static const Fixed&	max(const Fixed&, const Fixed&);
-	static const Fixed&	max(const Fixed&, Fixed&);
-	static const Fixed&	max(Fixed&, const Fixed&);
+	static const Fixed&	min( const Fixed&, const Fixed& );
+	static const Fixed&	max( const Fixed&, const Fixed& );
+	static const Fixed&	min( Fixed&, Fixed& );
+	static const Fixed&	max( Fixed&, Fixed& );
 
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );

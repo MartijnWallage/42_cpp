@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:46 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:22:47 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:31:12 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,7 @@ Fixed	Fixed::operator-( const Fixed& other ) const {
 }
 
 Fixed	Fixed::operator*( const Fixed& other ) const {
-
-	int64_t	result = static_cast<int64_t>(value);
-	result *= static_cast<int64_t>(other.value);
-	result >>= 16;
-	return Fixed(static_cast<int>(result));
+	return (this->toFloat() * other.toFloat());
 }
 
 Fixed	Fixed::operator/( const Fixed& other ) const {
@@ -140,43 +136,25 @@ Fixed	Fixed::operator--( int ) {
 
 }
 
-Fixed&	Fixed::min(Fixed& a, Fixed& b) {
-
-	return a.value < b.value ? a : b;
-
-}
-
 const Fixed&	Fixed::min(const Fixed& a, const Fixed& b) {
 
 	return a.value < b.value ? a : b;
 
 }
 
-const Fixed&	Fixed::min(const Fixed& a, Fixed& b) {
-
-	return a.value < b.value ? a : b;
-
-}
-
-const Fixed&	Fixed::min(Fixed& a, const Fixed& b) {
-
-	return a.value < b.value ? a : b;
-
-}
-
-Fixed&	Fixed::max(Fixed& a, Fixed& b) {
+const Fixed&	Fixed::max(const Fixed& a, const Fixed& b) {
 
 	return a.value > b.value ? a : b;
 
 }
 
-const Fixed&	Fixed::max(const Fixed& a, Fixed& b) {
+const Fixed&	Fixed::min(Fixed& a, Fixed& b) {
 
-	return a.value > b.value ? a : b;
+	return a.value < b.value ? a : b;
 
 }
 
-const Fixed&	Fixed::max(Fixed& a, const Fixed& b) {
+const Fixed&	Fixed::max(Fixed& a, Fixed& b) {
 
 	return a.value > b.value ? a : b;
 
