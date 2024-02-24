@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
+#    By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 14:17:41 by mwallage          #+#    #+#              #
-#    Updated: 2024/02/22 14:17:44 by mwallage         ###   ########.fr        #
+#    Updated: 2024/02/24 16:17:59 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,10 @@ EXEC 		:= megaphone
 
 all: $(EXEC)
 
-$(EXEC): $(OBJ) $(HPP)
+$(EXEC): $(OBJ)
 	$(CPP) $(CPPFLAGS) $^ -o $@
 
-%.o: %.cpp
+%.o: %.cpp $(HPP)
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
