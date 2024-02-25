@@ -6,13 +6,13 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:19:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:19:08 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/25 17:13:51 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Account.hpp"
 #include <iostream>
 #include <ctime>
+#include "Account.hpp"
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;

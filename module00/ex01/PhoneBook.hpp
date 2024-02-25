@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:23 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/24 08:41:21 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/25 17:06:46 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ public:
 	void displayContacts() const;
 	~PhoneBook();
 private:
-	Contact		contacts[8];
-	int			contact_count;
-	std::string	truncateName(const std::string& str) const;
+	Contact		_contacts[8];
+	int			_contact_count;
+	int			_index;
+	std::string	_truncateName(const std::string& str) const;
+	std::string	_getInput(const std::string& message) const;
 };
