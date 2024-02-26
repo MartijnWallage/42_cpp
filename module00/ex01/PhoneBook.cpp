@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:18 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/25 17:07:57 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/26 19:29:50 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,19 @@ std::string	PhoneBook::_getInput(const std::string& message) const
 {
 	std::string	input;
 
-	while (input.size() == 0)
+	while (true)
 	{
 		std::cout << message;
-		std::getline(std::cin, input);
+		if (std::cin >> input) {
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			return (input);
+		}
+		else if (std::cin.eof())
+			exit(0);
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
-	return (input);
+	return "";
 }
 
 //	Public
@@ -47,7 +54,7 @@ void	PhoneBook::addContact()
 
 	input = _getInput("Enter first name: ");
 	_contacts[_index].setFirstName(input);
-
+	
 	input = _getInput("Enter last name: ");
 	_contacts[_index].setLastName(input);
 
@@ -100,7 +107,7 @@ void	PhoneBook::searchContact() const
 			&& index < _contact_count) {
 			break ;
 		} else if (std::cin.eof()) {
-			return ;
+			exit(0);
 		} else {
 			std::cout << "Invalid input. Try again!" << std::endl;
 			std::cin.clear();
@@ -108,7 +115,7 @@ void	PhoneBook::searchContact() const
 		}
 	}
 	_contacts[index].displayContact();
-	std::cin.ignore();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 PhoneBook::~PhoneBook() {}
