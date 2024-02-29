@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:20:10 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:20:12 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:51:26 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ Zombie*	zombieHorde( int N, std::string name ) {
 
 	for (int i = 0; i < N; i++) {
 		zombies[i].setName(name);
-		zombies[i].announce();
 	}
 	return (zombies);
 }

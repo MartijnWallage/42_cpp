@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:20:06 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:20:08 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:00:57 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 class	Zombie {
 	public:
-		void		setName(const std::string& nname);
+		void		setName(const std::string& name);
 		std::string	getName() const;
 
 		void		announce( void ) const;
@@ -26,7 +26,7 @@ class	Zombie {
 		~Zombie( void );
 	
 	private:
-		std::string	name;
+		std::string	_name;
 };
 
 Zombie* zombieHorde( int N, std::string name );
