@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:21:02 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:21:03 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:40:04 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ std::string	replaceStr(const std::string& source, const std::string& from, const
 	return result;
 }
 
-int	main(int argc, char *argv[]) {
+int	main(int argc, char *argv[])
+{
 	if (argc != 4) {
 		std::cout << "Format: " << argv[0] << " <filename> <str1> <str2>" << std::endl;
 		return 1;

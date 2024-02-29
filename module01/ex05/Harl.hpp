@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:21:21 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:21:22 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:55:49 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ public:
 	Harl( void );
 	~Harl();
 private:
-	int				getLevel( std::string type ) const;
-	std::string		levels[4];
-	void			unknown( void );
-	void			debug( void );
-	void			info( void );
-	void			warning( void );
-	void			error( void );
+	int				_getLevel( std::string type ) const;
+	std::string		_levels[4];
+	void			_unknown( void );
+	void			_debug( void );
+	void			_info( void );
+	void			_warning( void );
+	void			_error( void );
 };
