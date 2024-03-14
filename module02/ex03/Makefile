@@ -6,16 +6,16 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 14:22:58 by mwallage          #+#    #+#              #
-#    Updated: 2024/03/14 14:48:48 by mwallage         ###   ########.fr        #
+#    Updated: 2024/03/14 16:37:10 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPP		:= c++
 FLAGS	:= -std=c++98 -Wall -Wextra -Werror
-SRC		:= main.cpp Fixed.cpp Point.cpp
+SRC		:= main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJ		:= $(SRC:.cpp=.o)
-HPP		:= Fixed.hpp
-EXEC	:= Fixed
+HPP		:= Fixed.hpp Point.hpp
+EXEC	:= bsp
 
 all: $(EXEC)
 

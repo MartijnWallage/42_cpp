@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:46 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/24 17:52:27 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:32:37 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ int		Fixed::toInt( void ) const {
 
 Fixed& Fixed::operator=( const Fixed& other ) 
 {
-	this->_value = other._value;
+	if (this != &other) {
+		this->_value = other._value;
+	}
 	return *this;
 }
 

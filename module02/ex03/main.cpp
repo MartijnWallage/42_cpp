@@ -3,28 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:54 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/24 17:26:37 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:37:49 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Point.hpp"
 #include <iostream>
-#include "Fixed.hpp"
 
-int main( void ) {
+int main() {
+    // Creating vertices of the triangle
+    Point a(0.0, 0.0);
+    Point b(0.0, 1.0);
+    Point c(1.0, 0.0);
 
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << Fixed(5.055f) << std::endl;
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
+    // Point to be checked
+    Point point(0.3, 0.3);
 
-	return 0;
+    // Checking if the point is inside the triangle
+    bool inside = bsp(a, b, c, point);
+
+    // Outputting the result
+    if(inside) {
+        std::cout << "The point is inside the triangle." << std::endl;
+    } else {
+        std::cout << "The point is outside the triangle or on its edge." << std::endl;
+    }
+
+    return 0;
 }

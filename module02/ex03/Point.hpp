@@ -1,4 +1,3 @@
-=-098765 +
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:39:36 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/14 14:40:25 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:35:06 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +15,18 @@
 
 class Point {
 private:
-	const Fixed	_x;
-	const Fixed _y;
+	Fixed	_x;
+	Fixed	_y;
 
 public:
 	Point( void );
 	Point(const float x, const float y);
 	Point(const Point& orig);
-	Point& operator=(const Point& other);
+	Point& operator=(Point const& other);
 	~Point( void );
+
+	Fixed	getX( void ) const;
+	Fixed	getY( void ) const;
 };
+
+bool bsp(Point const a, Point const b, Point const c, Point const point);
