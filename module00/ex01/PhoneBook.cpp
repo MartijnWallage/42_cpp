@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:18 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/26 19:29:50 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:12:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 #include <iomanip>
 #include <limits>
 #include <cctype>
+#include <cstdlib>
+
+// Helper
+
+void	ignoreLine( void )
+{
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
 
 // Private
 
@@ -36,13 +44,13 @@ std::string	PhoneBook::_getInput(const std::string& message) const
 	{
 		std::cout << message;
 		if (std::cin >> input) {
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			ignoreLine();
 			return (input);
 		}
 		else if (std::cin.eof())
-			exit(0);
+			return "";
 		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		ignoreLine();
 	}
 	return "";
 }
@@ -53,18 +61,28 @@ void	PhoneBook::addContact()
 	std::string input;
 
 	input = _getInput("Enter first name: ");
+	if (input == "")
+		return ;
 	_contacts[_index].setFirstName(input);
 	
 	input = _getInput("Enter last name: ");
+	if (input == "")
+		return ;
 	_contacts[_index].setLastName(input);
 
 	input = _getInput("Enter nickname: ");
+	if (input == "")
+		return ;
 	_contacts[_index].setNickname(input);
 
 	input = _getInput("Enter phone number: ");
+	if (input == "")
+		return ;
 	_contacts[_index].setPhoneNumber(input);
 
 	input = _getInput("Enter darkest secret: ");
+	if (input == "")
+		return ;
 	_contacts[_index].setSecret(input);
 
 	_index++;
@@ -100,19 +118,18 @@ void	PhoneBook::searchContact() const
 		return ;
 	}
 	displayContacts();
-	while (true) {
+	while (true)
+	{
 		std::cout << "Enter index of phonebook contact to display: ";
 		if (std::cin >> index
 			&& index >= 0
 			&& index < _contact_count) {
 			break ;
-		} else if (std::cin.eof()) {
-			exit(0);
-		} else {
-			std::cout << "Invalid input. Try again!" << std::endl;
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
+		else if (std::cin.eof())
+			return ;
+		std::cin.clear();
+		ignoreLine();
 	}
 	_contacts[index].displayContact();
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 14:18:23 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/28 15:57:54 by mwallage         ###   ########.fr       */
+/*   Created: 2024/03/14 14:46:28 by mwallage          #+#    #+#             */
+/*   Updated: 2024/03/14 15:40:07 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma	once
-#include "Contact.hpp"
+#include "Point.hpp"
 
-class	PhoneBook {
-public:
-	PhoneBook();
-	void addContact();
-	void searchContact() const;
-	void displayContacts() const;
-	~PhoneBook();
-private:
-	Contact		_contacts[8];
-	int			_contact_count;
-	int			_index;
-	std::string	_truncateName(const std::string& str) const;
-	std::string	_getInput(const std::string& message) const;
-};
+Point::Point( void ) : _x(0.0), _y(0.0)
+{
+}
 
-void	ignoreLine( void );
+Point::Point(const float x, const float y) : _x(x), _y(y)
+{
+}
+
+Point::Point(const Point& orig) : _x(orig._x), _y(orig._y)
+{
+}
+
+Point& Point::operator=(const Point& other)
+{
+	this->_x = other._x;
+	this->_y = other._y;
+	return *this;
+}
+
+Point::~Point( void ) {}

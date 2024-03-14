@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:17:33 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/25 16:09:41 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:51:57 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main() {
 			phoneBook.searchContact();
 		} else if (std::cin.eof()) {
 			std::cout << std::endl;
-			return 0;
+			break ;
 		} else if (command == "EXIT") {
 			break ;
 		} else {
