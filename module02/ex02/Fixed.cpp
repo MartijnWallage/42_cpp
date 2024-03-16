@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:46 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/24 17:52:27 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:09:16 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ bool	Fixed::operator!=( const Fixed& other ) const
 
 Fixed	Fixed::operator+( const Fixed& other ) const
 {
-	return Fixed(_value + other._value);
+	return this->toFloat() + other.toFloat();
 }
 
 Fixed	Fixed::operator-( const Fixed& other ) const
 {
-	return Fixed(_value - other._value);
+	return this->toFloat() - other.toFloat();
 }
 
 Fixed	Fixed::operator*( const Fixed& other ) const

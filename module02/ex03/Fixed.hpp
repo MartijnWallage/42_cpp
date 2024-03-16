@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:49 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/24 17:07:11 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:24:26 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ public:
 	Fixed	operator-( const Fixed& other ) const;
 	Fixed	operator*( const Fixed& other ) const;
 	Fixed	operator/( const Fixed& other ) const;
+	Fixed	abs( void ) const;
 
 	static const Fixed&	min( const Fixed&, const Fixed& );
 	static const Fixed&	max( const Fixed&, const Fixed& );

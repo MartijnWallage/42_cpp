@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:54 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/24 17:26:37 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:08:26 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ int main( void ) {
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;
 	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
+	std::cout << "a: " << a << std::endl;
+	std::cout << "b: " << b << std::endl;
+	std::cout << "max(a, b): " << Fixed::max( a, b ) << std::endl;
+	std::cout << "a - b: " << a - b << std::endl;
+	std::cout << "a + b: " << a + b << std::endl;
+	std::cout << "a * b: " << a * b << std::endl;
+	std::cout << "b / a: " << b / a << std::endl;
 
 	return 0;
 }

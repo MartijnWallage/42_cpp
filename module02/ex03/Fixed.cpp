@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:46 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/14 16:32:37 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:24:18 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ bool	Fixed::operator!=( const Fixed& other ) const
 
 Fixed	Fixed::operator+( const Fixed& other ) const
 {
-	return Fixed(_value + other._value);
+	return this->toFloat() + other.toFloat();
 }
 
 Fixed	Fixed::operator-( const Fixed& other ) const
 {
-	return Fixed(_value - other._value);
+	return this->toFloat() - other.toFloat();
 }
 
 Fixed	Fixed::operator*( const Fixed& other ) const
@@ -133,6 +133,11 @@ Fixed	Fixed::operator--( int )
 	temp._value = this->_value--;
 	return temp;
 
+}
+
+Fixed	Fixed::abs( void ) const
+{
+	return (std::abs(this->toFloat()));
 }
 
 const Fixed&	Fixed::min(const Fixed& a, const Fixed& b)
