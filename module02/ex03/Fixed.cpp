@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:46 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/16 14:24:18 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:07:17 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,18 @@ bool	Fixed::operator!=( const Fixed& other ) const
 
 Fixed	Fixed::operator+( const Fixed& other ) const
 {
-	return this->toFloat() + other.toFloat();
+	Fixed	result;
+
+	result.setRawBits(this->_value + other._value);
+	return result;
 }
 
 Fixed	Fixed::operator-( const Fixed& other ) const
 {
-	return this->toFloat() - other.toFloat();
+	Fixed	result;
+	
+	result.setRawBits(this->_value - other._value);
+	return result;
 }
 
 Fixed	Fixed::operator*( const Fixed& other ) const

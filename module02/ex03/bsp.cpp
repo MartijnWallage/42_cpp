@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:56:00 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/16 14:30:32 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:32:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
     size1 = area_size(point, a, b);
     size2 = area_size(point, b, c);
     size3 = area_size(point, a, c);
-    std::cout << "a: " << a.getX() << "," << a.getY() << " b: " << b.getX() << "," << b.getY() << " c: " << c.getX() << "," << c.getY() << std::endl; 
+/*     std::cout << "a: " << a.getX() << "," << a.getY() << " b: " << b.getX() << "," << b.getY() << " c: " << c.getX() << "," << c.getY() << std::endl; 
+    std::cout << "point: " << point.getX() << "," << point.getY() << std::endl; 
     std::cout << "Total size: " << total_size << std::endl;
-    std::cout << "Size1: " << size1 << std::endl;
-    std::cout << "Size2: " << size2 << std::endl;
-    std::cout << "Size3: " << size3 << std::endl;
+    std::cout << "Area point-a-b: " << size1 << std::endl;
+    std::cout << "Area point-b-c: " << size2 << std::endl;
+    std::cout << "Area point-a-c: " << size3 << std::endl;
     std::cout << "Size1 + size2 + size3: " << size1 + size2 + size3 << std::endl;
-    return ((total_size - (size1 + size2 + size3)).abs() < Fixed(0.01f));
+    std::cout << "(Total-size - (Size1 + size2 + size3)).abs().getRawBits(): " << (total_size - (size1 + size2 + size3)).abs().getRawBits() << std::endl; */
+    return (total_size - (size1 + size2 + size3)).abs().getRawBits() <= 1;
 }
