@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:22:08 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:22:11 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/17 15:18:01 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Fixed.hpp"
 #include <cmath>
 
-Fixed::Fixed( void ) : value( 0 ) {
+Fixed::Fixed( void ) : _value( 0 ) {
 
 	std::cout << "Default constructor called" << std::endl;
 
@@ -30,7 +30,7 @@ Fixed::Fixed( const Fixed& obj ) {
 Fixed::Fixed( const int intValue ) {
 
 	std::cout << "Int constructor called" << std::endl;
-	this->value = intValue << fracSize;
+	this->_value = intValue << _fracSize;
 
 }
 
@@ -41,24 +41,24 @@ Fixed::Fixed( const float floatValue ) {
 	float	fracPart = floatValue - intPart;
 	int		fixedFracPart = static_cast<int>(roundf(fracPart * 256));
 
-	value = (intPart << 8) | (fixedFracPart);
+	_value = (intPart << 8) | (fixedFracPart);
 }
 
 float	Fixed::toFloat( void ) const {
 
-	return 	static_cast<float>(value) / (1 << fracSize);
+	return 	static_cast<float>(_value) / (1 << _fracSize);
 
 }
 
 int		Fixed::toInt( void ) const {
 
-	return value >> 8;
+	return _value >> 8;
 }
 
 Fixed& Fixed::operator=( const Fixed& other ) {
 
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->value = other.value;
+	this->_value = other._value;
 
 	return *this;
 }
@@ -73,13 +73,13 @@ int		Fixed::getRawBits( void ) const {
 
 	std::cout << "getRawBits member function called" << std::endl;
 
-	return (value);
+	return (_value);
 }
 
 void	Fixed::setRawBits( int const raw ) {
 
 	std::cout << "setRawBits member function called" << std::endl;
-	value = raw;
+	_value = raw;
 
 }
 

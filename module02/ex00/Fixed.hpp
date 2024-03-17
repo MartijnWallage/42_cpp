@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:21:56 by mwallage          #+#    #+#             */
-/*   Updated: 2024/02/22 14:21:58 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/17 14:57:27 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 class Fixed {
 private:
-	int					value;
-	static const int	frac_bits = 8;
+	int					_value;
+	static const int	_fracBits = 8;
 public:
 	Fixed( void );
 	Fixed( const Fixed& obj );
