@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 16:03:20 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/17 17:56:22 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/18 14:50:13 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,17 @@
 int	main( void )
 {
 	ScavTrap	scav1("Adam"), scav2("Harry");
+	ScavTrap	anon;
+	std::string	name;
 
-	scav1.attack("Adam");
+	name = scav2.getName();
+	scav1.attack(name);
 	scav2.takeDamage(10);
 	scav2.beRepaired(10);
 	scav2.guardGate();
+	anon.attack(name);
+	anon.setName("Alex");
+	name = scav1.getName();
+	for (int i = 0; i < 51; i++)
+		anon.attack(name);
 }

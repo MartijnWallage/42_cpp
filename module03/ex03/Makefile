@@ -6,16 +6,16 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 14:22:58 by mwallage          #+#    #+#              #
-#    Updated: 2024/03/17 18:00:51 by mwallage         ###   ########.fr        #
+#    Updated: 2024/03/18 15:29:37 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPP		:= c++
-FLAGS	:= -std=c++98 -Wall -Wextra -Werror
-SRC		:= main.cpp ScavTrap.cpp ClapTrap.cpp
+FLAGS	:= -std=c++98 -Wall -Wextra -Werror -Wshadow
+SRC		:= main.cpp FragTrap.cpp ClapTrap.cpp ScavTrap.cpp DiamondTrap.cpp
 OBJ		:= $(SRC:.cpp=.o)
-HPP		:= ScavTrap.hpp ClapTrap.hpp
-EXEC	:= ScavTrap
+HPP		:= FragTrap.hpp ClapTrap.hpp ScavTrap.hpp DiamondTrap.hpp
+EXEC	:= DiamondTrap
 
 all: $(EXEC)
 

@@ -71,6 +71,7 @@
 		"locale": "cpp",
 		"mutex": "cpp",
 		"ratio": "cpp",
-		"variant": "cpp"
+		"variant": "cpp",
+		"span": "cpp"
 	}
 }
