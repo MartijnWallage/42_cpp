@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.cpp                                       :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:25:22 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/19 16:44:37 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:08:38 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "WrongCat.hpp"
+#include "Cat.hpp"
+#include "Brain.hpp"
 
-WrongCat::WrongCat( void ) : WrongAnimal("WrongCat")
+Cat::Cat( void ) : Animal("Cat")
 {
+	_brain = new Brain;
 }
 
-WrongCat::WrongCat( const WrongCat& ) : WrongAnimal("WrongCat")
+Cat::Cat( const Cat& other ) : Animal("Cat")
 {
+	this->_brain = new Brain(*other._brain);
 }
 
-WrongCat&	WrongCat::operator=( const WrongCat& other )
+Cat&	Cat::operator=( const Cat& other )
 {
 	_type = other._type;
+	*_brain = *other._brain;
 	return *this;
 }
 
-WrongCat::~WrongCat( void )
+Cat::~Cat( void )
 {
+	delete _brain;
 }
 
-void	WrongCat::makeSound( void ) const
+void	Cat::makeSound( void ) const
 {
-	std::cout << "WrongCat goes meow!!" << std::endl;
+	std::cout << "Cat goes meow!!" << std::endl;
 }

@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:15:21 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/19 16:44:44 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:01:08 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include "WrongAnimal.hpp"
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class WrongCat: public WrongAnimal {
+class Cat: public Animal {
+	private:
+		Brain	*_brain;
 	public:
-		WrongCat( void );
-		WrongCat( const WrongCat& );
-		WrongCat&	operator=( const WrongCat& );
-		~WrongCat( void );
+		Cat( void );
+		Cat( const Cat& );
+		Cat&	operator=( const Cat& );
+		~Cat( void );
 
 		void	makeSound( void ) const;
 };

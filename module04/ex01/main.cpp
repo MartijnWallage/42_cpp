@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 15:15:21 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/19 16:44:44 by mwallage         ###   ########.fr       */
+/*   Created: 2024/03/19 15:03:37 by mwallage          #+#    #+#             */
+/*   Updated: 2024/03/19 17:10:21 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include <iostream>
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 #include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
-class WrongCat: public WrongAnimal {
-	public:
-		WrongCat( void );
-		WrongCat( const WrongCat& );
-		WrongCat&	operator=( const WrongCat& );
-		~WrongCat( void );
+int main()
+{
+	Animal	*farm[100];
 
-		void	makeSound( void ) const;
-};
+	for (int i = 0; i < 100; i++) {
+		if (i % 2 == 0) {
+			farm[i] = new Cat;
+		} else {
+			farm[i] = new Dog;
+		}
+	}
+	return 0;
+}

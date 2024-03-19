@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 15:15:21 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/19 16:44:44 by mwallage         ###   ########.fr       */
+/*   Created: 2024/03/19 15:25:22 by mwallage          #+#    #+#             */
+/*   Updated: 2024/03/19 16:45:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include "WrongAnimal.hpp"
+#include <iostream>
+#include "WrongCat.hpp"
 
-class WrongCat: public WrongAnimal {
-	public:
-		WrongCat( void );
-		WrongCat( const WrongCat& );
-		WrongCat&	operator=( const WrongCat& );
-		~WrongCat( void );
+WrongCat::WrongCat( void ) : WrongAnimal("WrongCat")
+{
+}
 
-		void	makeSound( void ) const;
-};
+WrongCat::WrongCat( const WrongCat& ) : WrongAnimal("WrongCat")
+{
+}
+
+WrongCat&	WrongCat::operator=( const WrongCat& other )
+{
+	_type = other._type;
+	return *this;
+}
+
+WrongCat::~WrongCat( void )
+{
+}
+
+void	WrongCat::makeSound( void ) const
+{
+	std::cout << "WrongCat goes meow!!" << std::endl;
+}

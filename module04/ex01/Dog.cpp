@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.cpp                                       :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 15:25:22 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/19 16:44:37 by mwallage         ###   ########.fr       */
+/*   Created: 2024/03/19 15:29:31 by mwallage          #+#    #+#             */
+/*   Updated: 2024/03/19 17:09:16 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "WrongCat.hpp"
+#include "Dog.hpp"
 
-WrongCat::WrongCat( void ) : WrongAnimal("WrongCat")
+Dog::Dog( void ) : Animal("Dog")
 {
+	_brain = new Brain;
 }
 
-WrongCat::WrongCat( const WrongCat& ) : WrongAnimal("WrongCat")
+Dog::Dog( const Dog& other ) : Animal("Dog")
 {
+	_brain = new Brain(*other._brain);
 }
 
-WrongCat&	WrongCat::operator=( const WrongCat& other )
+Dog&	Dog::operator=( const Dog& other )
 {
 	_type = other._type;
+	*_brain = *other._brain;
 	return *this;
 }
 
-WrongCat::~WrongCat( void )
+Dog::~Dog( void )
 {
+	delete _brain;
 }
 
-void	WrongCat::makeSound( void ) const
+void	Dog::makeSound( void ) const
 {
-	std::cout << "WrongCat goes meow!!" << std::endl;
+	std::cout << "Dog goes woof!!" << std::endl;
 }
+
