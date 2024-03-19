@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 16:03:20 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/18 16:30:36 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:24:26 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,14 @@
 int	main( void )
 {
 	DiamondTrap	scav1("Adam"), scav2("Harry");
-	DiamondTrap	anon;
+	DiamondTrap	anon, proteus(scav1);
 	std::string	name;
 
+	proteus.whoAmI();
+	proteus.displayPoints();
+	proteus = scav2;
+	proteus.whoAmI();
+	proteus.displayPoints();
 	scav1.displayPoints();
 	scav2.displayPoints();
 	anon.displayPoints();

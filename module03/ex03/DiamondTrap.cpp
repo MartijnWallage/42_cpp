@@ -20,10 +20,28 @@ DiamondTrap::DiamondTrap( void ) : ClapTrap()
 	std::cout << "Anonymous DiamondTrap " << _name << " is constructed." << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name")
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), FragTrap(name + "_clap_name"), ScavTrap(name + "_clap_name")
 {
 	_name = name;
 	std::cout << "DiamondTrap " << _name << " is constructed." << std::endl;
+}
+
+DiamondTrap::DiamondTrap( const DiamondTrap& other ) : ClapTrap(other._name + "_clap_name"), FragTrap(other._name + "_clap_name"), ScavTrap(other._name + "_clap_name")
+{
+	*this = other;
+	std::cout << "A clone of DiamondTrap " << _name << " is constructed." << std::endl;
+
+}
+
+DiamondTrap&	DiamondTrap::operator=( const DiamondTrap& other )
+{
+	std::cout << "DiamondTrap " << _name;
+	this->_name = other._name;
+	this->_hitPoints = other._hitPoints;
+	this->_energyPoints = other._energyPoints;
+	this->_attackDamage = other._attackDamage;
+	std::cout << " is now a clone of DiamondTrap " << _name << std::endl;
+	return *this;
 }
 
 void	DiamondTrap::setName( std::string name)

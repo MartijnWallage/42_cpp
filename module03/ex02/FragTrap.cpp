@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 16:52:54 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/18 15:01:22 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:35:52 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,24 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	_energyPoints = 100;
 	_attackDamage = 30;
 	std::cout << "FragTrap " << _name << " is constructed." << std::endl;
+}
+
+FragTrap::FragTrap( const FragTrap& other ) : ClapTrap(other._name)
+{
+	*this = other;
+	std::cout << "A clone of FragTrap " << _name << " is constructed." << std::endl;
+
+}
+
+FragTrap&	FragTrap::operator=( const FragTrap& other )
+{
+	std::cout << "FragTrap " << _name;
+	this->_name = other._name;
+	this->_hitPoints = other._hitPoints;
+	this->_energyPoints = other._energyPoints;
+	this->_attackDamage = other._attackDamage;
+	std::cout << " is now a clone of FragTrap " << _name << std::endl;
+	return *this;
 }
 
 FragTrap::~FragTrap() {

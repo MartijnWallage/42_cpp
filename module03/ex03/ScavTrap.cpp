@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 16:52:54 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/18 14:56:07 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:35:00 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,24 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	_energyPoints = 50;
 	_attackDamage = 20;
 	std::cout << "ScavTrap " << _name << " is constructed." << std::endl;
+}
+
+ScavTrap::ScavTrap( const ScavTrap& other ) : ClapTrap(other._name)
+{
+	*this = other;
+	std::cout << "A clone of ScavTrap " << _name << " is constructed." << std::endl;
+
+}
+
+ScavTrap&	ScavTrap::operator=( const ScavTrap& other )
+{
+	std::cout << "ScavTrap " << _name;
+	this->_name = other._name;
+	this->_hitPoints = other._hitPoints;
+	this->_energyPoints = other._energyPoints;
+	this->_attackDamage = other._attackDamage;
+	std::cout << " is now a clone of ScavTrap " << _name << std::endl;
+	return *this;
 }
 
 ScavTrap::~ScavTrap() {

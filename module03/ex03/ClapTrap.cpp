@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:53:20 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/18 17:42:08 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:33:11 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,23 @@ ClapTrap::ClapTrap( void ) : _name("No-one"), _hitPoints(10), _energyPoints(10),
 ClapTrap::ClapTrap( std::string name ) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "ClapTrap " << _name << " is constructed." << std::endl;
+}
+
+ClapTrap::ClapTrap( const ClapTrap& other )
+{
+	*this = other;
+	std::cout << "A clone of ClapTrap " << _name << " is constructed." << std::endl;
+}
+
+ClapTrap&	ClapTrap::operator=( const ClapTrap& other )
+{
+	std::cout << "ClapTrap " << _name;
+	this->_name = other._name;
+	this->_hitPoints = other._hitPoints;
+	this->_energyPoints = other._energyPoints;
+	this->_attackDamage = other._attackDamage;
+	std::cout << " is now a clone of ClapTrap " << _name << std::endl;
+	return *this;
 }
 
 void	ClapTrap::setName( const std::string& name )

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 16:03:20 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/18 14:31:07 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:28:58 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 int	main( void )
 {
 	ClapTrap	clap1("Harry"), clap2("Adam");
-	ClapTrap	anon;
+	ClapTrap	anon, proteus(clap1);
 	std::string	name;
 
+	proteus.beRepaired(20);
+	proteus = clap2;
+	proteus.beRepaired(20);
 	name = "Adam";
 	clap1.attack(name);
 	clap2.takeDamage(10);

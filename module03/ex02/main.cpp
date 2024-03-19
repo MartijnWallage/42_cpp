@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 16:03:20 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/18 15:03:10 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:14:55 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ int	main( void )
 {
 	FragTrap	scav1("Adam"), scav2("Harry");
 	FragTrap	anon;
+	FragTrap	cpy(scav2);
 	std::string	name;
 
+	cpy.highFiveGuys();
+	anon = scav1;
 	name = scav2.getName();
 	scav1.attack(name);
 	scav2.takeDamage(10);

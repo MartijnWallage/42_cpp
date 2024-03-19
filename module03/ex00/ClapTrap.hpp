@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:49:17 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/18 14:40:08 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:27:28 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ private:
 public:
 				ClapTrap( void );
 				ClapTrap( std::string name);
+				ClapTrap( const ClapTrap& other );
+	ClapTrap&	operator=( const ClapTrap& other );
 				~ClapTrap( void );
 	void		setName( const std::string& name );
 	std::string	getName( void ) const;	
