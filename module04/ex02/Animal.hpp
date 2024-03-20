@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:04:05 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/20 19:09:42 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:18:50 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ class Animal {
 
 		std::string	getType( void ) const;
 		void		setType( std::string type);
+
+		//	This is now a pure virtual function, so that Animal is an abstract class
 		virtual void	makeSound( void ) const = 0;
 };
