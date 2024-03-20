@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:17:05 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/19 17:01:12 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:55:09 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ class Dog: public Animal {
 		~Dog( void );
 
 		void	makeSound( void ) const;
+		Brain*	getBrain( void ) const;
 };

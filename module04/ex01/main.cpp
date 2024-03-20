@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:03:37 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/20 18:49:47 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:06:46 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ int main()
 	Dog copyDog = testDog;
 	copyDog = cloneDog;
 	copyDog = copyDog;
+	
+	Brain* testBrain = copyDog.getBrain();
+	*testBrain = *cloneDog.getBrain();
+	*testBrain = *testBrain;
 
 	Cat	testCat;
 	Cat cloneCat(testCat);

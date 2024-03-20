@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:44:21 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/20 18:39:45 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:56:58 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ const Brain&	Brain::operator=( const Brain& other)
 		for (int i = 0; i < 100; ++i)
 			_ideas[i] = other._ideas[i];
 		std::cout << "This brain is now the same as the other brain!" << std::endl;
+	} else {
+		std::cout << "These brains were already one and the same!" << std::endl;
 	}
 	return *this;
 }

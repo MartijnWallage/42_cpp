@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:29:31 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/20 18:46:48 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:04:52 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,8 @@ void	Dog::makeSound( void ) const
 	std::cout << "Dog goes woof!!" << std::endl;
 }
 
+Brain*	Dog::getBrain( void ) const
+{
+	std::cout << "Returning brain " << _brain << std::endl;
+	return _brain;
+}

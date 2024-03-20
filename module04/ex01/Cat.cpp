@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:25:22 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/20 18:35:43 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:04:56 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,10 @@ Cat::~Cat( void )
 void	Cat::makeSound( void ) const
 {
 	std::cout << "Cat goes meow!!" << std::endl;
+}
+
+Brain*	Cat::getBrain( void ) const
+{
+	std::cout << "Returning brain " << _brain << std::endl;
+	return _brain;
 }
