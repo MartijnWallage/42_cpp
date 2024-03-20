@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:25:22 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/19 17:08:38 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:35:43 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,38 @@
 #include "Cat.hpp"
 #include "Brain.hpp"
 
-Cat::Cat( void ) : Animal("Cat")
+Cat::Cat( void ) : Animal("Cat"), _brain(new Brain)
 {
-	_brain = new Brain;
+	std::cout << "Cat is created!" << std::endl;
 }
 
 Cat::Cat( const Cat& other ) : Animal("Cat")
 {
-	this->_brain = new Brain(*other._brain);
+	if (other._brain) {
+		_brain = new Brain(*other._brain);
+	} else {
+		_brain = NULL;
+	}
+	std::cout << "Cat is copied!" << std::endl;
 }
 
 Cat&	Cat::operator=( const Cat& other )
 {
-	_type = other._type;
-	*_brain = *other._brain;
+	if (this != &other) {
+		_type = other._type;
+		delete _brain;
+		_brain = new Brain(*other._brain);
+		std::cout << "This cat is now the same as the other cat!" << std::endl;
+	} else {
+		std::cout << "These cats were already one and the same cat" << std::endl;
+	}
 	return *this;
 }
 
 Cat::~Cat( void )
 {
 	delete _brain;
+	std::cout << "Cat died!" << std::endl;
 }
 
 void	Cat::makeSound( void ) const

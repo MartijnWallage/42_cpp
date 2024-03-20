@@ -3,36 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:29:31 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/19 17:09:16 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:46:48 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Dog.hpp"
 
-Dog::Dog( void ) : Animal("Dog")
+Dog::Dog( void ) : Animal("Dog"), _brain(new Brain)
 {
-	_brain = new Brain;
+	std::cout << "Dog is created!" << std::endl;
 }
 
 Dog::Dog( const Dog& other ) : Animal("Dog")
 {
-	_brain = new Brain(*other._brain);
+	if (other._brain) {
+		_brain = new Brain(*other._brain);
+	} else {
+		_brain = NULL;
+	}
+	std::cout << "Dog is copied!" << std::endl;
 }
 
 Dog&	Dog::operator=( const Dog& other )
 {
-	_type = other._type;
-	*_brain = *other._brain;
+	if (this != &other) {
+		Animal::operator=(other);
+		delete _brain;
+		_brain = new Brain(*other._brain);
+		std::cout << "This dog is now the same as the other dog" << std::endl;
+	} else {
+		std::cout << "These dogs were already one and the same dog" << std::endl;
+	}
 	return *this;
 }
 
 Dog::~Dog( void )
 {
 	delete _brain;
+	std::cout << "Dog died!" << std::endl;
 }
 
 void	Dog::makeSound( void ) const
