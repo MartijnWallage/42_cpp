@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:44:13 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/24 17:23:49 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/24 18:03:59 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "AMateria.hpp"
 
 class ICharacter {
-	protected:
-		std::string	_name;
 	public:
 		virtual ~ICharacter( void ) {}
 		virtual std::string const & getName() const = 0;
