@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:53:42 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/24 18:17:56 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/24 20:55:14 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Character::Character( std::string const name ) : _name(name)
 	std::cout << "Character " << _name << " constructed!" << std::endl;
 }
 
-Character::Character( Character const& other ) : _name(other._name)
+Character::Character( Character const& other ) : ICharacter(), _name(other._name)
 {
 	for (int i = 0; i < 4; i++) {
 		delete _inventory[i];
@@ -56,7 +56,7 @@ Character::~Character( void )
 	std::cout << "Character " << _name << " destructed" << std::endl;
 }
 
-std::string const & Character::getName()
+std::string const & Character::getName() const
 {
 	return _name;
 }

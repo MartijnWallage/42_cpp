@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:18:15 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/24 18:28:23 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/24 21:01:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ MateriaSource::MateriaSource( void )
 	std::cout << "MateriaSource constructed!" << std::endl;
 }
 
-MateriaSource::MateriaSource( MateriaSource const& other )
+MateriaSource::MateriaSource( MateriaSource const& other ) : IMateriaSource()
 {
 	for (int i = 0; i < 4; i++) {
 		_inventory[i] = other._inventory[i];
@@ -63,8 +63,8 @@ AMateria* MateriaSource::createMateria( std::string const & type )
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_inventory[i] && this->_inventory[i]->getType() == type)
-			return (this->_inventory[i]->clone());
+		if (_inventory[i] && _inventory[i]->getType() == type)
+			return (_inventory[i]->clone());
 	}
 	std::cout << "Cannot create materia, " << type << " is invalid!" << std::endl;
 	return (0);

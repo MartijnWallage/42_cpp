@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:54:05 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/24 18:04:06 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/24 18:42:32 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ public:
 	Character& operator=( Character const& other );
 	~Character( void );
 
-	std::string const & getName();
+	std::string const & getName() const;
 	void equip( AMateria* m);
 	void unequip( int idx );
-	void use( int idx, ICharacter& target ) = 0;
+	void use( int idx, ICharacter& target );
 };

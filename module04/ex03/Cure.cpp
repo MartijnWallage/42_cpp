@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:44:30 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/24 17:45:37 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/24 21:05:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Cure::Cure( Cure const& other ) : AMateria(other.getType())
 	std::cout << "Cure copied!" << std::endl;
 }
 
-Cure& Cure::operator=( Cure const& other )
+Cure& Cure::operator=( Cure const& )
 {
 	std::cout << "Cure assigned to another!" << std::endl;
 	return (*this);

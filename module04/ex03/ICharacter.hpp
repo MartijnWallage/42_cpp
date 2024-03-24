@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:44:13 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/24 18:03:59 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/24 19:08:45 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 #include "AMateria.hpp"
 
 class ICharacter {
+	protected:
+		ICharacter( void );
+		ICharacter( ICharacter const& );
+		ICharacter& operator=( ICharacter const& );
 	public:
 		virtual ~ICharacter( void ) {}
 		virtual std::string const & getName() const = 0;

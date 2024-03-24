@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:53:31 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/24 17:40:09 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/24 19:11:04 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 AMateria::AMateria( void ) : _type("Materia")
 {
@@ -30,6 +31,7 @@ AMateria::AMateria( AMateria const& other ) : _type(other._type)
 
 AMateria&	AMateria::operator=( AMateria const& other )
 {
+	(void)&other;
 	std::cout << "AMaterias assigned to another!" << std::endl;
 	return *this;
 }
