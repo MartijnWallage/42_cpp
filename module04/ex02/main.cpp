@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:03:37 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/25 15:57:44 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:34:45 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int main()
 	Cat copyCat = testCat;
 	copyCat = cloneCat;
 	
+	// Animal	impossiblyGenericIndividual;
 	return 0;
 }

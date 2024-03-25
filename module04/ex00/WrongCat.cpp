@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:25:22 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/25 15:43:01 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:21:26 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ WrongCat::~WrongCat( void )
 
 void	WrongCat::makeSound( void ) const
 {
-	std::cout << "WrongCat goes meow!!" << std::endl;
+	std::cout << "WrongCat goes wrongmeow!!" << std::endl;
 }

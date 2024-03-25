@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:03:37 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/25 15:55:20 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:31:51 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main()
 		farm[i]->makeSound();
 		delete farm[i];
 	}
-
 
 	Dog	testDog;
 	Dog copyDog(testDog);

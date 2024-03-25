@@ -6,11 +6,11 @@ class ICharacter;
 class AMateria {
 	protected:
 		std::string const	_type;
-	public:
 		AMateria( void );
-		AMateria( std::string const & type );
 		AMateria( AMateria const& other );
 		AMateria&	operator=( AMateria const& other );
+	public:
+		AMateria( std::string const & type );
 		virtual ~AMateria( void );
 
 		std::string const & getType() const;
