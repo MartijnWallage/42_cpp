@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:18:15 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/24 21:01:19 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/25 13:12:25 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ AMateria* MateriaSource::createMateria( std::string const & type )
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (_inventory[i] && _inventory[i]->getType() == type)
+		if (_inventory[i] && _inventory[i]->getType() == type) {
+			std::cout << "AMateria of type " << _inventory[i]->getType() << " cloned!" << std::endl;
 			return (_inventory[i]->clone());
+		}
 	}
-	std::cout << "Cannot create materia, " << type << " is invalid!" << std::endl;
+	std::cout << "Invalid type! Cannot create materia." << std::endl;
 	return (0);
 }
