@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:29:31 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/20 19:04:52 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:50:10 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 Dog::Dog( void ) : Animal("Dog"), _brain(new Brain)
 {
-	std::cout << "Dog is created!" << std::endl;
+	std::cout << "Dog is created" << std::endl;
 }
 
 Dog::Dog( const Dog& other ) : Animal("Dog")
@@ -25,7 +25,7 @@ Dog::Dog( const Dog& other ) : Animal("Dog")
 	} else {
 		_brain = NULL;
 	}
-	std::cout << "Dog is copied!" << std::endl;
+	std::cout << "Dog is copied" << std::endl;
 }
 
 Dog&	Dog::operator=( const Dog& other )
@@ -44,7 +44,7 @@ Dog&	Dog::operator=( const Dog& other )
 Dog::~Dog( void )
 {
 	delete _brain;
-	std::cout << "Dog died!" << std::endl;
+	std::cout << "Dog died" << std::endl;
 }
 
 void	Dog::makeSound( void ) const

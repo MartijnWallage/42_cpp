@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:04:05 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/19 16:34:35 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:45:21 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Animal {
 		Animal( std::string type );
 		Animal( const Animal& );
 		Animal&	operator=( const Animal& );
-		~Animal( void );
+		virtual ~Animal( void );
 
 		std::string	getType( void ) const;
 		void		setType( std::string type);
