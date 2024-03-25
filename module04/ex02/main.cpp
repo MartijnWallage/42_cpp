@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:03:37 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/20 19:12:15 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:56:29 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 
 int main()
 {
@@ -35,7 +33,6 @@ int main()
 	Dog cloneDog(testDog);
 	Dog copyDog = testDog;
 	copyDog = cloneDog;
-	copyDog = copyDog;
 	
 	Brain* testBrain = copyDog.getBrain();
 	*testBrain = *cloneDog.getBrain();
@@ -45,7 +42,6 @@ int main()
 	Cat cloneCat(testCat);
 	Cat copyCat = testCat;
 	copyCat = cloneCat;
-	copyCat = copyCat;
 	
 	return 0;
 }
