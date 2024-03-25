@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:03:37 by mwallage          #+#    #+#             */
-/*   Updated: 2024/03/25 15:56:29 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:57:44 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ int main()
 		farm[i]->makeSound();
 		delete farm[i];
 	}
+
 	Dog	testDog;
-	Dog cloneDog(testDog);
-	Dog copyDog = testDog;
-	copyDog = cloneDog;
-	
-	Brain* testBrain = copyDog.getBrain();
-	*testBrain = *cloneDog.getBrain();
-	*testBrain = *testBrain;
+	Dog copyDog(testDog);
+
+	if (testDog.getBrain() == copyDog.getBrain()) {
+		std::cout << "error: brain was not deep copied!" << std::endl;
+	} else {
+		std::cout << "Brain was deep copied" << std::endl;
+	}
 
 	Cat	testCat;
 	Cat cloneCat(testCat);
