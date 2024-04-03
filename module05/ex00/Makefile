@@ -3,32 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+         #
+#    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 14:22:58 by mwallage          #+#    #+#              #
-#    Updated: 2024/03/24 19:07:56 by mwallage         ###   ########.fr        #
+#    Updated: 2024/04/03 18:27:53 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPP		:= c++
 FLAGS	:= -std=c++98 -Wall -Wextra -Werror
 SRC		:= main.cpp \
-			AMateria.cpp \
-			ICharacter.cpp \
-			Character.cpp \
-			Ice.cpp \
-			Cure.cpp \
-			IMateriaSource.cpp \
-			MateriaSource.cpp
+			Bureaucrat.cpp
 OBJ		:= $(SRC:.cpp=.o)
-HPP		:= AMateria.hpp \
-			ICharacter.hpp \
-			Character.hpp \
-			Ice.hpp \
-			Cure.hpp \
-			IMateriaSource.hpp \
-			MateriaSource.hpp
-EXEC	:= Materia
+HPP		:= Bureaucrat.hpp
+EXEC	:= Bureaucrat
 
 all: $(EXEC)
 
