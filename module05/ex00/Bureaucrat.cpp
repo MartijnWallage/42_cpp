@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:59:16 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/04 16:59:19 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:47:51 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,13 @@ int	Bureaucrat::getGrade( void ) const {
 void Bureaucrat::incGrade( void) {
 	_grade--;
 	checkGrade();
+	std::cout << "Grade of bureaucrat " << _name << " increased" << std::endl;
 }
 
 void Bureaucrat::decGrade( void ) {
 	_grade++;
 	checkGrade();
+	std::cout << "Grade of bureaucrat " << _name << " decreased" << std::endl;
 }
 
 void Bureaucrat::checkGrade( void ) const {

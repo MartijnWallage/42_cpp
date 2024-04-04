@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:59:07 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/04 17:08:33 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:48:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,18 @@
 #include "Bureaucrat.hpp"
 
 int main( void ) {
+	std::string	name("Josef K.");
+
+	Bureaucrat	a;
+	Bureaucrat	b(name, 10);
+	std::cout << b << std::endl;
+	b.decGrade();
+	b.incGrade();
+	b = a;
+	std::cout << b << std::endl;
+
+	std::cout << "***********************************" << std::endl;
 	try {
-		std::string	name("Josef K.");
 		Bureaucrat* j = new Bureaucrat(name, 0);
 		delete j;
 	}
@@ -23,10 +33,9 @@ int main( void ) {
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "***********************************" << std::endl << std::endl;
+	std::cout << "***********************************" << std::endl;
 
 	try {
-		std::string	name("Josef K.");
 		Bureaucrat* j = new Bureaucrat(name, 151);
 		delete j;
 	}
@@ -34,8 +43,8 @@ int main( void ) {
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "***********************************" << std::endl << std::endl;
-
+	std::cout << "***********************************" << std::endl;
+	
 	try {
 		Bureaucrat	K;
 		K.decGrade();
