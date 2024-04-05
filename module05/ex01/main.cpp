@@ -6,50 +6,37 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:59:07 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/04 17:48:19 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:36:56 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main( void ) {
-	std::string	name("Josef K.");
+	Form		form("tax", 3, 2);
+	Bureaucrat	K;
 
-	Bureaucrat	a;
-	Bureaucrat	b(name, 10);
-	std::cout << b << std::endl;
-	b.decGrade();
-	b.incGrade();
-	b = a;
-	std::cout << b << std::endl;
+	std::cout << form << std::endl;
+	std::cout << K << std::endl;
 
-	std::cout << "***********************************" << std::endl;
 	try {
-		Bureaucrat* j = new Bureaucrat(name, 0);
-		delete j;
+		K.signForm( form );
+		form.beSigned(K);
+		K.signForm( form );
 	}
 	catch (std::exception & e) {
 		std::cout << e.what() << std::endl;
 	}
-
-	std::cout << "***********************************" << std::endl;
-
-	try {
-		Bureaucrat* j = new Bureaucrat(name, 151);
-		delete j;
-	}
-	catch (std::exception & e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << "***********************************" << std::endl;
 	
+	std::cout << form << std::endl;
+
 	try {
-		Bureaucrat	K;
-		K.decGrade();
-		K.incGrade();
-		K.decGrade();
+		std::string	name("Josef K.");
+		Bureaucrat newK(name, 1);
+		std::cout << newK << std::endl;
+		newK.signForm( form );
 	}
 	catch (std::exception & e) {
 		std::cout << e.what() << std::endl;

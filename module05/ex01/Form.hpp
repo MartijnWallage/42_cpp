@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:25:13 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/04 18:45:57 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:25:23 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Form {
 	private:
 		std::string const	_name;
-		bool				_signed;
+		bool				_isSigned;
 		int const			_signGrade;
 		int const			_execGrade;
 	public:
@@ -30,19 +30,20 @@ class Form {
 		~Form( void );
 
 		std::string const	getName( void ) const;
-		bool				getSigned( void ) const;
-		int const			getSignGrade( void ) const;
-		int const			getExecGrade( void ) const;
+		bool				getIsSigned( void ) const;
+		int 				getSignGrade( void ) const;
+		int 				getExecGrade( void ) const;
 
 		void				beSigned( Bureaucrat& );
-		void				signForm( void );
 
 		class GradeTooHighException : public std::exception {
-			virtual const char* what() const throw();
+			public:
+				virtual const char* what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception {
-			virtual const char* what() const throw();
+			public:
+				virtual const char* what() const throw();
 		};
 };
 
