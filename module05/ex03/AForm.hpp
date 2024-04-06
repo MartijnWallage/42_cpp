@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:25:13 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/06 18:03:12 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/06 20:11:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,8 @@ class AForm {
 		bool			getIsSigned( void ) const;
 		int 			getSignGrade( void ) const;
 		int 			getExecGrade( void ) const;
-
 		void			beSigned( Bureaucrat& );
-
-		void			execute( Bureaucrat const &executor ) const;
+		void			execute( Bureaucrat const &executor ) const;\
 
 		class GradeTooHighException : public std::exception {
 			public:

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 19:46:28 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/06 19:54:10 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/06 20:20:25 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 Intern::Intern( void ) {
 	std::cout << "Nameless intern hired" << std::endl;
+
+	std::string	requests[] =
+		{"robotomy request", "presidential pardon", "shrubbery creation"};
+	void ( AForm::*constructors[3] )( std::string formTarget );
+
 }
 
 Intern::Intern( Intern const & ) {
@@ -29,17 +34,13 @@ Intern::~Intern( void ) {
 }
 
 AForm* Intern::makeForm(std::string form, std::string target) {
-	AForm	*ret;
 
-	if (form == "PresidentialPardonForm")
-		ret = new PresidentialPardonForm(target);
-	else if (form == "ShrubberyCreationForm")
-		ret = new ShrubberyCreationForm(target);
-	else if (form == "RobotomyRequestForm")
-		ret = new RobotomyRequestForm(target);
-	else {
-		std::cerr << "Unknown form" << std::endl;
-		return NULL;
+	try {
+		ret = AForm::makeForm(form, target);
+		std::cout << form << "made" << std::endl;
+	}
+	catch (std::exception & e) {
+		std::cerr << e.what() << std::endl;
 	}
 	return ret;
 }
