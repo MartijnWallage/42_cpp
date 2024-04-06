@@ -6,20 +6,20 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:35:47 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/06 19:07:15 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/06 18:06:22 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm( void )
-: AForm("default", 145, 137), _target("default")
+: AForm("default", 145, 137)
 {
 	std::cout << "Default ShrubberyCreationForm created" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
-: AForm(target, 145, 137), _target(target)
+: AForm(target, 145, 137)
 {
 	std::cout << "ShrubberyCreationForm with target " << _target
 		<< " created" << std::endl;
@@ -47,25 +47,9 @@ std::string ShrubberyCreationForm::getTarget( void ) const {
 	return _target;
 }
 
-void ShrubberyCreationForm::beExecuted( Bureaucrat const & ) const
+void ShrubberyCreationForm::beExecuted( Bureaucrat const &bureaucrat ) const
 {
-	std::ofstream	outfile;
-
-	outfile.open((this->_target + "_shrubbery").c_str());
-	if (!outfile.is_open()) {
-		std::cerr << "Could not open file " << _target + "_shrubbery" << std::endl;
-		return ;
-	}
-
-    std::string tree = 
-    	"         _______[Root]_______\n"
-        "        /                     \\\n"
-        "    __[Node1]__           __[Node2]__\n"
-        "   /           \\         /           \\\n"
-        "[LeafA]     [Node3]   [Node4]     [LeafB]\n"
-        "            /    \\     /    \\\n"
-        "       [LeafC] [LeafD] [LeafE] [LeafF]\n";
-
-	outfile << tree;
-	outfile.close();
+	std::cout << "Bureaucrat " << bureaucrat.getName()
+		<< " executed ShrubberyCreationForm"
+		<< this->AForm::getName() << std::endl;
 }

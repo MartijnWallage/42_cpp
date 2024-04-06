@@ -16,13 +16,11 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
-#include <fstream>
-
 
 class ShrubberyCreationForm : public AForm {
 	private:
 		std::string	_target;
-
+		
 		ShrubberyCreationForm( void );
 		void	beExecuted( Bureaucrat const &bureaucrat ) const;
 	public:
