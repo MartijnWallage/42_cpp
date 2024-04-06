@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:35:47 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/05 16:33:40 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/06 17:22:38 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Form::~Form( void ) {
 	std::cout << "Form " << _name << " destroyed" << std::endl;
 }
 
-std::string const Form::getName( void ) const {
+std::string	Form::getName( void ) const {
 	return _name;
 }
 
