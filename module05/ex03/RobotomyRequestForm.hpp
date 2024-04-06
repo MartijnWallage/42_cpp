@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:25:13 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/06 18:30:30 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/06 19:20:24 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include <cstdlib>
 
 class RobotomyRequestForm : public AForm {
 	private:

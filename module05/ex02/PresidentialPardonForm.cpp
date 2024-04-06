@@ -13,22 +13,22 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm( void )
-: AForm("default", 25, 5), _target("default target")
+: AForm("PresidentialPardonForm", 25, 5), _target("default target")
 {
-	std::cout << "Default Presidential Pardon Form created" << std::endl;
+	std::cout << "Default PresidentialPardonForm created" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm( std::string target )
-: AForm("default", 25, 5), _target(target)
+: AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
-	std::cout << "Presidential Pardon Form with target " << _target
+	std::cout << "PresidentialPardonForm with target " << _target
 		<< " created" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const & other )
 : _target(other._target)
 {
-	std::cout << "Presidential Pardon Form with target " << _target
+	std::cout << "PresidentialPardonForm with target " << _target
 		<< " copy constructed" << std::endl;
 }
 
@@ -39,7 +39,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=( PresidentialPardonFor
 
 PresidentialPardonForm::~PresidentialPardonForm( void )
 {
-	std::cout << "Presidential Pardon Form with target " << _target
+	std::cout << "PresidentialPardonForm with target " << _target
 		<< " destroyed" << std::endl;
 }
 

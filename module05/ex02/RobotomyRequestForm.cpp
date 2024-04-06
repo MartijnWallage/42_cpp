@@ -6,20 +6,20 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:35:47 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/06 18:11:13 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/06 19:33:08 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm( void )
-: AForm("default", 72, 45)
+: AForm("RobotomyRequestForm", 72, 45), _target("none")
 {
 	std::cout << "Default RobotomyRequestForm created" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm( std::string target )
-: AForm(target, 72, 45)
+: AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
 	std::cout << "RobotomyRequestForm with target " << _target
 		<< " created" << std::endl;
@@ -47,9 +47,16 @@ std::string RobotomyRequestForm::getTarget( void ) const {
 	return _target;
 }
 
-void RobotomyRequestForm::beExecuted( Bureaucrat const &bureaucrat ) const
+void RobotomyRequestForm::beExecuted( Bureaucrat const & ) const
 {
-	std::cout << "Bureaucrat " << bureaucrat.getName()
-		<< " executed RobotomyRequestForm"
-		<< this->AForm::getName() << std::endl;
+	std::cout << "(Drilling noises.)" << std::endl;
+
+	std::srand(time(0));
+	int isRobotomized = std::rand() % 2;
+	std::cout << "isRobotomized is " << isRobotomized << std::endl;
+	if (isRobotomized) {
+		std::cout << this->_target << " has been robotomized" << std::endl;
+	} else {
+		std::cout << "Robotomy has failed" << std::endl;
+	}
 }
