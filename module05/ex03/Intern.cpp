@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 19:46:28 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/06 20:20:25 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/07 17:15:07 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 Intern::Intern( void ) {
 	std::cout << "Nameless intern hired" << std::endl;
-
-	std::string	requests[] =
-		{"robotomy request", "presidential pardon", "shrubbery creation"};
-	void ( AForm::*constructors[3] )( std::string formTarget );
-
 }
 
 Intern::Intern( Intern const & ) {
@@ -27,20 +22,40 @@ Intern::Intern( Intern const & ) {
 
 Intern& Intern::operator=( Intern const & ) {
 	std::cout << "Nameless intern copy assigned" << std::endl;
+	return *this;
 }
 
 Intern::~Intern( void ) {
 	std::cout << "Nameless intern released" << std::endl;
 }
 
-AForm* Intern::makeForm(std::string form, std::string target) {
+AForm*	makeShrubbery( std::string target ) {
+	return (new ShrubberyCreationForm( target ));
+}
 
-	try {
-		ret = AForm::makeForm(form, target);
-		std::cout << form << "made" << std::endl;
+AForm*	makeRobotomy( std::string target ) {
+	return (new RobotomyRequestForm( target ));
+}
+
+AForm*	makePresidential( std::string target ) {
+	return (new PresidentialPardonForm( target ));
+}
+
+AForm* Intern::makeForm(std::string form, std::string target)
+{
+	std::string	commands[] = {"robotomy request", "presidential pardon", "shrubbery creation"};
+	AForm*		(*creators[])( std::string target) = {&makeRobotomy, &makePresidential, &makeShrubbery};
+	 
+	for (int i = 0; i < 3; i++) {
+		if (commands[i] == form) {
+			std::cout << "Form " << form << " found" << std::endl;
+			return creators[i](target);
+		}
 	}
-	catch (std::exception & e) {
-		std::cerr << e.what() << std::endl;
-	}
-	return ret;
+	throw InvalidFormRequestException();
+	return (NULL);
+}
+
+const char* Intern::InvalidFormRequestException::what() const throw() {
+	return "Intern: invalid form request";
 }

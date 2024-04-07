@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:59:07 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/06 19:21:54 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/07 16:55:55 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include "RobotomyRequestForm.hpp"
 
 int main( void ) {
-	std::string				target("Marc Rich");
-	std::string				name("Josef K.");
+	std::string	target("Marc Rich");
+	std::string	name("Josef K.");
 
 	// PresidentialPardonForm:
 	

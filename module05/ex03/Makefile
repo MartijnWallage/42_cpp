@@ -6,7 +6,7 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 14:22:58 by mwallage          #+#    #+#              #
-#    Updated: 2024/04/06 18:02:53 by mwallage         ###   ########.fr        #
+#    Updated: 2024/04/07 16:56:25 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,15 @@ SRC		:= main.cpp \
 			AForm.cpp \
 			PresidentialPardonForm.cpp \
 			RobotomyRequestForm.cpp \
-			ShrubberyCreationForm.cpp
+			ShrubberyCreationForm.cpp \
+			Intern.cpp
 OBJ		:= $(SRC:.cpp=.o)
 HPP		:= Bureaucrat.hpp \
 			AForm.hpp \
 			PresidentialPardonForm.hpp \
 			RobotomyRequestForm.hpp \
-			ShrubberyCreationForm.hpp
+			ShrubberyCreationForm.hpp \
+			Intern.hpp
 EXEC	:= Bureaucrat
 
 all: $(EXEC)

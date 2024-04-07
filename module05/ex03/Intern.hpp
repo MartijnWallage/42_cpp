@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 19:41:29 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/06 20:21:35 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/07 17:14:55 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,12 @@ class Intern {
 		~Intern( void );
 
 		AForm* makeForm(std::string form, std::string target);
+
+		class InvalidFormRequestException: public std::exception {
+			virtual const char* what() const throw();
+		};
 };
+
+AForm*	makeShrubbery( std::string target );
+AForm*	makePresidential( std::string target );
+AForm*	makeRobotomy( std::string target );
