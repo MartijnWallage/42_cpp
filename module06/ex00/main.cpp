@@ -6,18 +6,17 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:46:49 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/10 16:52:36 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:28:22 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-int main() {
-    ScalarConverter::convert("a");
-    ScalarConverter::convert("42");
-    ScalarConverter::convert("3.14");
-    ScalarConverter::convert("-inff");
-    ScalarConverter::convert("nan");
-
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        std::cerr << "Usage: ./convert <literal>" << std::endl;
+        return 1;
+    }
+    ScalarConverter::convert(argv[1]);
     return 0;
 }
