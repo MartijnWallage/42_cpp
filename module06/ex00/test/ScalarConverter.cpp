@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:41:58 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/12 19:21:15 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/12 19:29:13 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ScalarConverter::printChar( std::string const & input) {
 }
 
 void	ScalarConverter::printInt( std::string const & input) {
-	int	value;
+	int					value;
 	std::istringstream	iss(input);
 	
 	iss >> value;
@@ -55,15 +55,17 @@ void	ScalarConverter::printInt( std::string const & input) {
 }
 
 void	ScalarConverter::printFloat( std::string const & input) {
-	float	value;
+	float				value;
 	std::istringstream	iss(input);
+	std::string			test;
 
 	iss >> value;
 	if (iss.fail())
 		std::cout << "impossible" << std::endl;
 	else {
 		std::cout << value;
-		if (input.find('.') == std::string::npos) {
+		iss >> test;
+		if (test.find('.') == std::string::npos) {
 			std::cout << ".0";
 		}
 		std::cout << "f" << std::endl;
@@ -71,15 +73,17 @@ void	ScalarConverter::printFloat( std::string const & input) {
 }
 
 void	ScalarConverter::printDouble( std::string const & input) {
-	double	value;
+	double				value;
 	std::istringstream	iss(input);
+	std::string			test;
 
 	iss >> value;
 	if (iss.fail())
 		std::cout << "impossible" << std::endl;
 	else {
 		std::cout << value;
-		if (input.find('.') == std::string::npos) {
+		iss >> test;
+		if (test.find('.') == std::string::npos) {
 			std::cout << ".0";
 		}
 		std::cout << std::endl;
