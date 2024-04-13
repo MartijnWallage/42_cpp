@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:41:58 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/13 19:12:10 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/13 19:42:06 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,63 +60,82 @@ bool scalarConverter::isDouble( std::string const & input ) {
 // std::strtod()
 
 void	scalarConverter::printChar( std::string const & input) {
-//	long int	temp = std::strtol(input.c_str(), NULL, 10);
-
-	std::istringstream	iss(input);
-	int					intValue;
-
-	iss >> intValue;
-	if (iss.fail())
-		std::cout << "impossible" << std::endl;
-	else if (intValue < 32 || intValue > 126)
-		std::cout << "not printable" << std::endl;
-	else
-		std::cout << "'" << static_cast<char>(intValue) << "'" << std::endl;
+	char	c = input[1];
+	std::cout << "char: " << input << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 
 void	scalarConverter::printInt( std::string const & input) {
-	int					value;
+	int					n;
 	std::istringstream	iss(input);
-	
-	iss >> value;
-	if (iss.fail())
-		std::cout << "impossible" << std::endl;
+
+	iss >> n;
+	if (iss.fail()) {
+		std::cerr << "conversion failed" << std::endl;
+		return ;
+	}
+	else if (n < 32 || n > 126)
+		std::cout << "char: " << "not printable" << std::endl;
 	else
-		std::cout << value << std::endl;
+		std::cout << "char: '" << static_cast<char>(n) << "'" << std::endl;
+	std::cout << "int: " << n << std::endl;
+	std::cout << "float: " << static_cast<float>(n) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(n) << std::endl;
 }
 
 void	scalarConverter::printFloat( std::string const & input) {
-	float				value;
+	float				f;
+	int					n;
 	std::istringstream	iss(input);
 	std::string			test;
 
-	iss >> value;
-	if (iss.fail())
-		std::cout << "impossible" << std::endl;
-	else {
-		std::cout << value;
-		iss >> test;
-		if (test.find('.') == std::string::npos) {
-			std::cout << ".0";
-		}
-		std::cout << "f" << std::endl;
+	iss >> f;
+	if (iss.fail()) {
+		std::cerr << "conversion failed" << std::endl;
+		return ;
 	}
+	n = static_cast<int>(f);
+	if (n < 32 || n > 126)
+		std::cout << "char: " << "not printable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
+	std::cout << "int: " << n << std::endl;
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 
 void	scalarConverter::printDouble( std::string const & input) {
-	double				value;
+	double				d;
+	int					n;
 	std::istringstream	iss(input);
 	std::string			test;
 
-	iss >> value;
-	if (iss.fail())
-		std::cout << "impossible" << std::endl;
-	else {
-		std::cout << value;
-		iss >> test;
-		if (test.find('.') == std::string::npos) {
-			std::cout << ".0";
-		}
-		std::cout << std::endl;
+	iss >> d;
+	if (iss.fail()) {
+		std::cerr << "conversion failed" << std::endl;
+		return ;
 	}
+	n = static_cast<int>(d);
+	if (n < 32 || n > 126)
+		std::cout << "char: " << "not printable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
+	std::cout << "int: " << static_cast<int>(d) << std::endl;
+	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;	
+}
+
+void scalarConverter::convert(std::string const & input) {
+	if (isChar(input))
+		printChar(input);
+	else if (isInt(input))
+		printInt(input);
+	else if (isFloat(input))
+		printFloat(input);
+	else if (isDouble(input))
+		printDouble(input);
+	else
+		std::cout << "Unknown type" << std::endl;
 }

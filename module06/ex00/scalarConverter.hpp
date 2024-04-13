@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   scalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:36:45 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/13 18:37:35 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/13 19:19:34 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,6 @@ public:
 	static void	printFloat( std::string const & input);
 	static void	printDouble( std::string const & input);
 
-	template <typename T>
-    static void convert(std::string const & input) {
-		if (typeid(T) == typeid(char))
-			printChar( input );
-		else if (typeid(T) == typeid(int))
-			printInt( input );
-		else if (typeid(T) == typeid(float))
-			printFloat( input );
-		else if (typeid(T) == typeid(double))
-			printDouble( input );
-		else
-			std::cerr << "Unknown type" << std::endl;
-	}
+    static void convert(std::string const & input);
 };
 
