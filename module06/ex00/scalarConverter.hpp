@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:36:45 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/13 19:19:34 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/13 19:45:45 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <cmath>
 #include <cstring>
 #include <limits>
-#include <typeinfo>
+#include <iomanip>
 
 enum Type {
 	CHAR,
