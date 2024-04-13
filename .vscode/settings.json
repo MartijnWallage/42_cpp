@@ -72,6 +72,7 @@
 		"mutex": "cpp",
 		"ratio": "cpp",
 		"variant": "cpp",
-		"span": "cpp"
+		"span": "cpp",
+		"cinttypes": "cpp"
 	}
 }

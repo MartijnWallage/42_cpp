@@ -6,16 +6,16 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 14:22:58 by mwallage          #+#    #+#              #
-#    Updated: 2024/04/12 16:18:43 by mwallage         ###   ########.fr        #
+#    Updated: 2024/04/13 19:00:19 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPP		:= c++
-FLAGS	:= -std=c++98 -Wall -Wextra -Werror
+FLAGS	:= -std=c++98 -Wall -Wextra -Werror -g
 SRC		:= main.cpp \
-			ScalarConverter.cpp
+			scalarConverter.cpp
 OBJ		:= $(SRC:.cpp=.o)
-HPP		:= ScalarConverter.hpp
+HPP		:= scalarConverter.hpp
 EXEC	:= convert
 
 all: $(EXEC)
