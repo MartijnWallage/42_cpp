@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:41:58 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/14 19:05:10 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/14 19:09:40 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ void scalarConverter::printTable( double const d ) {
 		std::cout << "char: " << static_cast<char>(d) << std::endl;
 
 	if (isNan(d) || isInf(d)
-		|| d < static_cast<float>(INT_MIN) || d > static_cast<float>(INT_MAX))
+		|| d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX))
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << n << std::endl;
