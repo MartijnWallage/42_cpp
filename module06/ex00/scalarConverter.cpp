@@ -6,11 +6,20 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:41:58 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/14 18:31:25 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/14 19:05:10 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scalarConverter.hpp"
+
+bool isNan(float x) {
+    return x != x;
+}
+
+bool isInf(float x) {
+    return x == std::numeric_limits<float>::infinity()
+		|| x == -std::numeric_limits<float>::infinity();
+}
 
 scalarConverter::scalarConverter( void ) {
 	std::cout << "We'll never see this constructor construct anything." << std::endl;
@@ -65,22 +74,61 @@ bool scalarConverter::isDouble( std::string const & input ) {
 // std::strtof()
 // std::strtod()
 
-void	scalarConverter::printChar( std::string const & input) {
-	char	c = input[1];
-	std::cout << "char: " << input << std::endl;
-	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(c) << std::endl;
+char	scalarConverter::convertChar( std::string const & input) {
+	return input[1];
 }
 
-void	scalarConverter::printInt( std::string const & input) {
+int	scalarConverter::convertInt( std::string const & input) {
 	int					n;
 	std::istringstream	iss(input);
 
 	iss >> n;
 	if (iss.fail())
 		throw scalarConverter::ConversionFailException();
+	return n;
+}
+
+float	scalarConverter::convertFloat( std::string const & input) {
+	float				f;
+	std::istringstream	iss(input);
+
+	if (input == "nanf")
+		return std::numeric_limits<float>::quiet_NaN();
+	if (input == "+inff")
+		return std::numeric_limits<float>::infinity();
+	if (input == "-inff")
+		return -std::numeric_limits<float>::infinity();
+	iss >> f;
+	if (iss.fail())
+		scalarConverter::ConversionFailException();
+	return f;
+}
+
+double	scalarConverter::convertDouble( std::string const & input) {
+	double				d;
+	std::istringstream	iss(input);
+
+	if (input == "nan")
+		return std::numeric_limits<double>::quiet_NaN();
+	if (input == "+inf")
+		return std::numeric_limits<double>::infinity();
+	if (input == "-inf")
+		return -std::numeric_limits<double>::infinity();
+	iss >> d;
+	if (iss.fail())
+		throw scalarConverter::ConversionFailException();
+	return d;
+}
+
+void scalarConverter::printTable( char const c ) {
+	std::cout << "char: " << c << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
+}
+
+void scalarConverter::printTable( int const n ) {
 	if (n < 0 || n > 127)
 		std::cout << "char: impossible" << std::endl;
 	else if (n < 32 || n > 126)
@@ -93,89 +141,73 @@ void	scalarConverter::printInt( std::string const & input) {
 	std::cout << "double: " << static_cast<double>(n) << std::endl;
 }
 
-void	scalarConverter::printFloat( std::string const & input) {
-	float				f;
-	int					n;
-	std::istringstream	iss(input);
+void scalarConverter::printTable( float const f ) {
+	int	n = static_cast<int>(f);
 
-	if (input == "nanf" || input == "-inff" || input == "+inff") {
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: " << input << std::endl;
-		std::cout << "double: " << input.substr(0, input.length() - 1) << std::endl;
-		return ;
-	}
-	iss >> f;
-	if (iss.fail())
-		scalarConverter::ConversionFailException();
-	n = static_cast<int>(f);
-	if (n < 0 || n > 127)
+	if (isNan(f) || isInf(f) || n < 0 || n > 127)
 		std::cout << "char: impossible" << std::endl;
 	else if (n < 32 || n > 126)
 		std::cout << "char: not printable" << std::endl;
 	else
-		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
-	if (f < static_cast<float>(INT_MIN) || f > static_cast<float>(INT_MAX))
+		std::cout << "char: " << static_cast<char>(f) << std::endl;
+
+	if (isNan(f) || isInf(f)
+		|| f < static_cast<float>(INT_MIN) || f > static_cast<float>(INT_MAX))
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << n << std::endl;
-	if (f - n == 0)
-		std::cout << std::fixed << std::setprecision(1);	// doesn't work for numbers that get rounded off to 0
+	
+	if (std::fmod(f, 1.0) == 0.0)
+		std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << f << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 
-void	scalarConverter::printDouble( std::string const & input) {
-	double				d;
-	int					n;
-	std::istringstream	iss(input);
-	std::string			test;
+void scalarConverter::printTable( double const d ) {
+	int	n = static_cast<int>(d);
 
-	if (input == "nan" || input == "-inf" || input == "+inf") {
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: " << input << "f" << std::endl;
-		std::cout << "double: " << input << std::endl;
-		return ;
-	}
-	iss >> d;
-	if (iss.fail())
-		throw scalarConverter::ConversionFailException();
-	n = static_cast<int>(d);
-	if (n < 0 || n > 127)
+	if (isNan(d) || isInf(d) || n < 0 || n > 127)
 		std::cout << "char: impossible" << std::endl;
 	else if (n < 32 || n > 126)
 		std::cout << "char: not printable" << std::endl;
 	else
-		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
-	if (d < INT_MIN || d > INT_MAX)
+		std::cout << "char: " << static_cast<char>(d) << std::endl;
+
+	if (isNan(d) || isInf(d)
+		|| d < static_cast<float>(INT_MIN) || d > static_cast<float>(INT_MAX))
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << n << std::endl;
-	if (d - n == 0)
+
+	if (std::fmod(d, 1.0) == 0.0)
 		std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;	
+	std::cout << "double: " << d << std::endl;
 }
+
 
 void scalarConverter::convert(std::string const & input) {
 	if (input.empty())
 		throw scalarConverter::EmptyInputException();
-	if (isChar(input)) {
+	if (isChar( input )) {
 		std::cout << "it's a char" << std::endl;
-		printChar(input);
+		char c = convertChar( input );
+		printTable( c );
 	}
-	else if (isInt(input)) {
-				std::cout << "it's an int" << std::endl;
-		printInt(input);
+	else if (isInt( input )) {
+		std::cout << "it's an int" << std::endl;
+		int n = convertInt( input );
+		printTable( n );
 	}
-	else if (isFloat(input)) {
+	else if (isFloat( input )) {
 		std::cout << "it's a float" << std::endl;
-		printFloat(input);
+		float f = convertFloat( input );
+		printTable( f );
 	}
 	else if (isDouble(input)) {
 		std::cout << "it's a double" << std::endl;
-		printDouble(input);
+		double d = convertDouble( input );
+		printTable( d );
 	}
 	else
 		throw scalarConverter::UnknownTypeException();

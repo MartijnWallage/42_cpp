@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:36:45 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/14 17:21:21 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/14 18:57:09 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@
 #include <limits>
 #include <iomanip>
 
-enum Type {
-	CHAR,
-	INT,
-	FLOAT,
-	DOUBLE,
-	OTHER
-};
-
 class scalarConverter {
 private:
     scalarConverter();
@@ -39,15 +31,20 @@ private:
 public:
 	~scalarConverter();
 	
-	static bool isChar( std::string const & input );
-	static bool isInt( std::string const & input );
-	static bool isFloat( std::string const & input );
-	static bool isDouble( std::string const & input );
+	static bool 	isChar( std::string const & input );
+	static bool 	isInt( std::string const & input );
+	static bool 	isFloat( std::string const & input );
+	static bool 	isDouble( std::string const & input );
 
-	static void	printChar( std::string const & input);
-	static void	printInt( std::string const & input);
-	static void	printFloat( std::string const & input);
-	static void	printDouble( std::string const & input);
+	static char		convertChar( std::string const & input);
+	static int		convertInt( std::string const & input);
+	static float	convertFloat( std::string const & input);
+	static double	convertDouble( std::string const & input);
+
+	static void		printTable( const char c );
+	static void 	printTable( const int n );
+	static void 	printTable( const float f );
+	static void 	printTable( const double d );
 
     static void convert(std::string const & input);
 
