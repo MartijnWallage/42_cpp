@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:36:45 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/13 19:45:45 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/14 17:21:21 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,17 @@ public:
 	static void	printDouble( std::string const & input);
 
     static void convert(std::string const & input);
+
+	class ConversionFailException : public std::exception {
+		virtual const char* what() const throw();
+	};
+
+	class EmptyInputException : public std::exception {
+		virtual const char* what() const throw();
+	};
+
+	class UnknownTypeException : public std::exception {
+		virtual const char* what() const throw();
+	};
 };
 
