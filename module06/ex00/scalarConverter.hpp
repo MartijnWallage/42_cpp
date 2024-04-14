@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:36:45 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/14 18:57:09 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/14 19:40:58 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ private:
     scalarConverter();
 	scalarConverter( scalarConverter const & );
 	scalarConverter& operator=( scalarConverter const &);
+	~scalarConverter();
 
 public:
-	~scalarConverter();
 	
 	static bool 	isChar( std::string const & input );
 	static bool 	isInt( std::string const & input );
@@ -46,7 +46,7 @@ public:
 	static void 	printTable( const float f );
 	static void 	printTable( const double d );
 
-    static void convert(std::string const & input);
+    static void		convert(std::string const & input);
 
 	class ConversionFailException : public std::exception {
 		virtual const char* what() const throw();

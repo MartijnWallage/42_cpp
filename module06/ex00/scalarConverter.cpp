@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:41:58 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/14 19:09:40 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/14 20:27:28 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,16 @@ bool isInf(float x) {
 		|| x == -std::numeric_limits<float>::infinity();
 }
 
-scalarConverter::scalarConverter( void ) {
+bool isNan(double x) {
+    return x != x;
+}
+
+bool isInf(double x) {
+    return x == std::numeric_limits<double>::infinity()
+		|| x == -std::numeric_limits<double>::infinity();
+}
+
+/* scalarConverter::scalarConverter( void ) {
 	std::cout << "We'll never see this constructor construct anything." << std::endl;
 }
 
@@ -36,7 +45,7 @@ scalarConverter & scalarConverter::operator=( scalarConverter const &) {
 
 scalarConverter::~scalarConverter( void ) {
 	std::cout << "We'll never see this destructor destruct anything." << std::endl;
-}
+} */
 
 bool scalarConverter::isChar( std::string const & input ) {
  	return input.size() == 3 && input[0] == '\'' && input[2] == '\'';
@@ -61,18 +70,40 @@ bool scalarConverter::isFloat( std::string const & input ) {
 		return true;
 	if (input == "nan" || input == "+inf" || input == "-inf")
 		return false;
-	return input.find('f') != std::string::npos;
+	
+	int	dotCounter = 0;
+
+	if (!isdigit(input[0]))
+		return false;
+	for (size_t i = 1; i < input.length(); i++) {
+		if (input[i] == 'f' && i == input.length() - 1)
+			return true;
+		if (!isdigit(input[i]) && input[i] != '.')
+			return false;
+		dotCounter += (input[i] == '.');
+		if (dotCounter > 1)	
+			return false;
+	}
+	return false;
 }
 
 bool scalarConverter::isDouble( std::string const & input ) {
 	if (input == "nan" || input == "+inf" || input == "-inf")
 		return true;
-	return input.find('.') != std::string::npos;
-}
 
-//	std::strtol()
-// std::strtof()
-// std::strtod()
+	int	dotCounter = 0;
+
+	if (!isdigit(input[0]))
+		return false;
+	for (size_t i = 1; i < input.length(); i++) {
+		if (!isdigit(input[i]) && input[i] != '.')
+			return false;
+		dotCounter += (input[i] == '.');
+		if (dotCounter > 1)	
+			return false;
+	}
+	return true;
+}
 
 char	scalarConverter::convertChar( std::string const & input) {
 	return input[1];
@@ -121,7 +152,7 @@ double	scalarConverter::convertDouble( std::string const & input) {
 }
 
 void scalarConverter::printTable( char const c ) {
-	std::cout << "char: " << c << std::endl;
+	std::cout << "char: '" << c << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
@@ -149,7 +180,7 @@ void scalarConverter::printTable( float const f ) {
 	else if (n < 32 || n > 126)
 		std::cout << "char: not printable" << std::endl;
 	else
-		std::cout << "char: " << static_cast<char>(f) << std::endl;
+		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
 
 	if (isNan(f) || isInf(f)
 		|| f < static_cast<float>(INT_MIN) || f > static_cast<float>(INT_MAX))
@@ -157,10 +188,14 @@ void scalarConverter::printTable( float const f ) {
 	else
 		std::cout << "int: " << n << std::endl;
 	
-	if (std::fmod(f, 1.0) == 0.0)
-		std::cout << std::fixed << std::setprecision(1);
+	if (f == std::floor(f))
+ 		std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << f << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(f) << std::endl;
+
+	float d = static_cast<double>(f);
+	if (d == std::floor(d))
+ 		std::cout << std::fixed << std::setprecision(1);
+	std::cout << "double: " << d << std::endl;
 }
 
 void scalarConverter::printTable( double const d ) {
@@ -171,7 +206,7 @@ void scalarConverter::printTable( double const d ) {
 	else if (n < 32 || n > 126)
 		std::cout << "char: not printable" << std::endl;
 	else
-		std::cout << "char: " << static_cast<char>(d) << std::endl;
+		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 
 	if (isNan(d) || isInf(d)
 		|| d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX))
@@ -179,10 +214,14 @@ void scalarConverter::printTable( double const d ) {
 	else
 		std::cout << "int: " << n << std::endl;
 
-	if (std::fmod(d, 1.0) == 0.0)
-		std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
+	float f = static_cast<float>(d);
+	if (f == std::floor(f))
+ 		std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << f << "f" << std::endl;
+
+	if (d == std::floor(d))
+ 		std::cout << std::fixed << std::setprecision(1);
+	std::cout << "double: " << std::fixed << std::setprecision(10) << d << std::endl;
 }
 
 
