@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:41:58 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/14 20:27:28 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:31:46 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,12 @@ bool scalarConverter::isFloat( std::string const & input ) {
 	if (input == "nan" || input == "+inf" || input == "-inf")
 		return false;
 	
-	int	dotCounter = 0;
+	int		dotCounter = 0;
+	size_t	i = 0;
 
-	if (!isdigit(input[0]))
+	if (input[i] == '+' || input[i] == '-')
+		i++;
+	if (!isdigit(input[i]))
 		return false;
 	for (size_t i = 1; i < input.length(); i++) {
 		if (input[i] == 'f' && i == input.length() - 1)
@@ -92,8 +95,11 @@ bool scalarConverter::isDouble( std::string const & input ) {
 		return true;
 
 	int	dotCounter = 0;
+	size_t	i = 0;
 
-	if (!isdigit(input[0]))
+	if (input[i] == '+' || input[i] == '-')
+		i++;
+	if (!isdigit(input[i]))
 		return false;
 	for (size_t i = 1; i < input.length(); i++) {
 		if (!isdigit(input[i]) && input[i] != '.')
@@ -215,10 +221,14 @@ void scalarConverter::printTable( double const d ) {
 		std::cout << "int: " << n << std::endl;
 
 	float f = static_cast<float>(d);
-	if (f == std::floor(f))
- 		std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << f << "f" << std::endl;
-
+	if (d < static_cast<double>(FLT_MIN) || d > static_cast<double>(FLT_MAX))
+		std::cout << "float: impossible" << std::endl;
+	else {
+		if (f == std::floor(f))
+ 			std::cout << std::fixed << std::setprecision(1);
+		std::cout << "float: " << f << "f" << std::endl;
+	}
+	
 	if (d == std::floor(d))
  		std::cout << std::fixed << std::setprecision(1);
 	std::cout << "double: " << std::fixed << std::setprecision(10) << d << std::endl;
@@ -229,22 +239,22 @@ void scalarConverter::convert(std::string const & input) {
 	if (input.empty())
 		throw scalarConverter::EmptyInputException();
 	if (isChar( input )) {
-		std::cout << "it's a char" << std::endl;
+		std::cout << "It's a char" << std::endl;
 		char c = convertChar( input );
 		printTable( c );
 	}
 	else if (isInt( input )) {
-		std::cout << "it's an int" << std::endl;
+		std::cout << "It's an int" << std::endl;
 		int n = convertInt( input );
 		printTable( n );
 	}
 	else if (isFloat( input )) {
-		std::cout << "it's a float" << std::endl;
+		std::cout << "It's a float" << std::endl;
 		float f = convertFloat( input );
 		printTable( f );
 	}
 	else if (isDouble(input)) {
-		std::cout << "it's a double" << std::endl;
+		std::cout << "It's a double" << std::endl;
 		double d = convertDouble( input );
 		printTable( d );
 	}
