@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:41:58 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/15 15:31:46 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:57:24 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,15 +193,11 @@ void scalarConverter::printTable( float const f ) {
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << n << std::endl;
-	
-	if (f == std::floor(f))
- 		std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << f << "f" << std::endl;
 
-	float d = static_cast<double>(f);
-	if (d == std::floor(d))
- 		std::cout << std::fixed << std::setprecision(1);
-	std::cout << "double: " << d << std::endl;
+	if (f <= std::floor(f) + 0.00001f)
+		std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 
 void scalarConverter::printTable( double const d ) {
@@ -220,18 +216,15 @@ void scalarConverter::printTable( double const d ) {
 	else
 		std::cout << "int: " << n << std::endl;
 
+	if (d <= std::floor(d) + 0.0001)
+		std::cout << std::fixed << std::setprecision(1);
 	float f = static_cast<float>(d);
 	if (d < static_cast<double>(FLT_MIN) || d > static_cast<double>(FLT_MAX))
 		std::cout << "float: impossible" << std::endl;
-	else {
-		if (f == std::floor(f))
- 			std::cout << std::fixed << std::setprecision(1);
+	else
 		std::cout << "float: " << f << "f" << std::endl;
-	}
-	
-	if (d == std::floor(d))
- 		std::cout << std::fixed << std::setprecision(1);
-	std::cout << "double: " << std::fixed << std::setprecision(10) << d << std::endl;
+
+	std::cout << "double: " << d << std::endl;
 }
 
 
