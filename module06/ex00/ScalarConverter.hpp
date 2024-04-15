@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:36:45 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/14 19:40:58 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:00:21 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 #include <limits>
 #include <iomanip>
 
-class scalarConverter {
+class ScalarConverter {
 private:
-    scalarConverter();
-	scalarConverter( scalarConverter const & );
-	scalarConverter& operator=( scalarConverter const &);
-	~scalarConverter();
+    ScalarConverter();
+	ScalarConverter( ScalarConverter const & );
+	ScalarConverter& operator=( ScalarConverter const &);
+	~ScalarConverter();
 
 public:
 	
