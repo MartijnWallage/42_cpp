@@ -1,7 +1,0 @@
-         _______[Root]_______
-        /                     \
-    __[Node1]__           __[Node2]__
-   /           \         /           \
-[LeafA]     [Node3]   [Node4]     [LeafB]
-            /    \     /    \
-       [LeafC] [LeafD] [LeafE] [LeafF]
