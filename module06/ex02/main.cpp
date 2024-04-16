@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:49:17 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/15 17:34:37 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:40:35 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ Base*	generate( void ) {
 }
 
 void	identify(Base* p) {
-	if (dynamic_cast<A *>(p))
+	if (dynamic_cast<A*>(p))
 		std::cout << "Object is of type A" << std::endl;
-	else if (dynamic_cast<B *>(p))
+	else if (dynamic_cast<B*>(p))
 		std::cout << "Object is of type B" << std::endl;
-	else if (dynamic_cast<C *>(p))
+	else if (dynamic_cast<C*>(p))
 		std::cout << "Object is of type C" << std::endl;
 	else
 		std::cout << "Object is of unknown type" << std::endl;
@@ -90,5 +90,6 @@ int main(void) {
 
 	identify(base);
 	identify(*base);
+	delete base;
 	return 0;
 }

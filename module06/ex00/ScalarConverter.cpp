@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scalarConverter.cpp                                :+:      :+:    :+:   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:41:58 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/15 16:00:16 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:47:15 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,8 +194,7 @@ void ScalarConverter::printTable( float const f ) {
 	else
 		std::cout << "int: " << n << std::endl;
 
-	if (f <= std::floor(f) + 0.00001f)
-		std::cout << std::fixed << std::setprecision(1);
+	std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << f << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
@@ -216,8 +215,7 @@ void ScalarConverter::printTable( double const d ) {
 	else
 		std::cout << "int: " << n << std::endl;
 
-	if (d <= std::floor(d) + 0.0001)
-		std::cout << std::fixed << std::setprecision(1);
+	std::cout << std::fixed << std::setprecision(1);
 	float f = static_cast<float>(d);
 	if (d < static_cast<double>(FLT_MIN) || d > static_cast<double>(FLT_MAX))
 		std::cout << "float: impossible" << std::endl;

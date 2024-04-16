@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 19:46:28 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/07 17:15:07 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/07 17:26:16 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ AForm* Intern::makeForm(std::string form, std::string target)
 	for (int i = 0; i < 3; i++) {
 		if (commands[i] == form) {
 			std::cout << "Form " << form << " found" << std::endl;
-			return creators[i](target);
+			return creators[i]( target );
 		}
 	}
 	throw InvalidFormRequestException();
