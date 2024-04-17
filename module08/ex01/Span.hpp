@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 16:48:55 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/17 18:28:23 by mwallage         ###   ########.fr       */
+/*   Created: 2024/04/17 18:30:15 by mwallage          #+#    #+#             */
+/*   Updated: 2024/04/17 19:09:46 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <vector>
-#include <list>
-#include <algorithm>
 #include <iostream>
+#include <vector>
 #include <stdexcept>
+#include <algorithm>
+#include <limits>
 
-class NotFoundException : public std::exception {
-	const char* what() const throw() {
-		return "Int value not found in container";
-	}
+class Span {
+	private:
+		size_t				_capacity;
+		std::vector<int>	_numbers;
+	
+	public:
+		Span( size_t N );
+		Span( Span const & );
+		Span & operator=( Span const & );
+		~Span( void );
+
+		void			addNumber( int nbr );
+		void			addRange( std::vector<int>::iterator begin, std::vector<int>::iterator end );
+		unsigned int	shortestSpan( void ) const;
+		unsigned int	longestSpan( void ) const;
+		
 };
-
-template<typename T>
-typename T::iterator easyfind(T& container, const int value) {
-	typename T::iterator	it = std::find(container.begin(), container.end(), value);
-	if (it == container.end()) {
-		throw NotFoundException();
-	}
-	return it;
-}

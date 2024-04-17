@@ -6,16 +6,17 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 14:22:58 by mwallage          #+#    #+#              #
-#    Updated: 2024/04/17 17:22:16 by mwallage         ###   ########.fr        #
+#    Updated: 2024/04/17 18:30:14 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPP		:= c++
 FLAGS	:= -std=c++98 -Wall -Wextra -Werror
-SRC		:= main.cpp
+SRC		:= main.cpp \
+			Span.cpp
 OBJ		:= $(SRC:.cpp=.o)
-HPP		:= easyfind.hpp
-EXEC	:= easyFind
+HPP		:= span.hpp
+EXEC	:= Span
 
 all: $(EXEC)
 

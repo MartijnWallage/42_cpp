@@ -73,6 +73,7 @@
 		"ratio": "cpp",
 		"variant": "cpp",
 		"span": "cpp",
-		"cinttypes": "cpp"
+		"cinttypes": "cpp",
+		"list": "cpp"
 	}
 }
