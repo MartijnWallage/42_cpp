@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:41:58 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/15 17:47:15 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/17 14:51:45 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,7 @@ void ScalarConverter::printTable( double const d ) {
 
 	std::cout << std::fixed << std::setprecision(1);
 	float f = static_cast<float>(d);
-	if (d < static_cast<double>(FLT_MIN) || d > static_cast<double>(FLT_MAX))
+	if (!isinf(d) && (d < static_cast<double>(FLT_MIN) || d > static_cast<double>(FLT_MAX)))
 		std::cout << "float: impossible" << std::endl;
 	else
 		std::cout << "float: " << f << "f" << std::endl;
