@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:42:05 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/17 19:22:57 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:44:26 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Span:: ~Span( void ) {
 void Span::addNumber( int nbr ) {
 	if (_numbers.size() == _capacity)
 		throw std::length_error("Cannot add number because span is full.");
+	std::cout << "Adding " << nbr << "..." << std::endl;
 	_numbers.push_back(nbr);
 }
 
