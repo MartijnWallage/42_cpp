@@ -12,11 +12,10 @@
 
 CPP		:= c++
 FLAGS	:= -std=c++98 -Wall -Wextra -Werror
-SRC		:= main.cpp \
-			Span.cpp
+SRC		:= main.cpp
 OBJ		:= $(SRC:.cpp=.o)
-HPP		:= Span.hpp
-EXEC	:= Span
+HPP		:= MutantStack.hpp
+EXEC	:= MutantStack
 
 all: $(EXEC)
 

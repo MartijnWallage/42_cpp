@@ -74,6 +74,8 @@
 		"variant": "cpp",
 		"span": "cpp",
 		"cinttypes": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"stack": "cpp",
+		"execution": "cpp"
 	}
 }
