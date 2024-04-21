@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:59:11 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/18 17:59:40 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:10:23 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,22 @@
 template<typename T>
 class MutantStack : public std::stack<T> {		
 	public:
-		using typename std::stack<T>::stack;
+		MutantStack( void ) : std::stack<T>::stack() {
+			std::cout << "MutantStack constructed" << std::endl;
+		}
+		MutantStack( MutantStack const & src ) : std::stack<T>::stack( src ) {
+			std::cout << "MutantStack copy constructed" << std::endl;
+		}
+		MutantStack & operator=( MutantStack const & src ) {
+			if (this != &src) {
+				this->c = src.c;
+				std::cout << "MutantStack copy assigned" << std::endl;
+			}
+			return *this;
+		}
+		~MutantStack( void ) {
+			std::cout << "MutantStack destructed" << std::endl;
+		}
 		
 		typedef typename std::deque<T>::iterator iterator;
 		typedef typename std::deque<T>::const_iterator const_iterator;
