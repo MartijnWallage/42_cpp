@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/21 16:29:41 by mwallage          #+#    #+#             */
+/*   Updated: 2024/04/21 16:29:44 by mwallage         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <iostream>
 #include "MutantStack.hpp"
@@ -88,8 +99,8 @@ int main( )
 		std::cout << "Top of mstack: " << mstack.top() << std::endl;
 		std::cout << "Top of mstack2: " <<  mstack2.top() << std::endl;
 		std::cout << "Top of mstack3: " <<  mstack3.top() << std::endl;
-		MutantStack<int>::iterator it = mstack2.begin();
-		MutantStack<int>::iterator ite = mstack2.end();
+		MutantStack<int>::reverse_iterator it = mstack3.rbegin();
+		MutantStack<int>::reverse_iterator ite = mstack3.rend();
 		++it;
 		--it;
 		while (it != ite)
@@ -99,7 +110,6 @@ int main( )
 		}
 		std::stack<int> s(mstack2);
 	}
-
 
 	return 0;
 }
