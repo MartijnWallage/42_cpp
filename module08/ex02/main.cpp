@@ -6,21 +6,22 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 16:29:41 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/21 16:29:44 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:54:38 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "MutantStack.hpp"
+#include <iostream>
 #include <ctime>
 #include <cstdlib>
 #include <list>
 #include <algorithm>
 
-int main( )
+int main()
 {
 	{
-		std::cout << std::endl << "Test from eval sheet" << std::endl;
+		std::cout << std::endl
+				  << "Test from eval sheet" << std::endl;
 		MutantStack<int> mstack;
 		mstack.push(5);
 		mstack.push(17);
@@ -49,7 +50,8 @@ int main( )
 	}
 
 	{
-		std::cout << std::endl << "Same test but with list instead of MutantStack" << std::endl;
+		std::cout << std::endl
+				  << "Same test but with list instead of MutantStack" << std::endl;
 		std::list<int> lst;
 		lst.push_back(5);
 		lst.push_back(17);
@@ -77,7 +79,8 @@ int main( )
 	}
 
 	{
-		std::cout << std::endl << "Some extra tests" << std::endl;
+		std::cout << std::endl
+				  << "Some extra tests" << std::endl;
 		MutantStack<int> mstack;
 		mstack.push(11231235);
 		mstack.push(1123127);
@@ -87,7 +90,7 @@ int main( )
 		MutantStack<int> mstack3;
 		mstack3 = mstack;
 		std::cout << "Size of mstack3: " << mstack3.size() << std::endl;
-		std::cout << "Changing mstack..." << std::endl;		
+		std::cout << "Changing mstack..." << std::endl;
 		mstack.pop();
 		std::cout << "Top of mstack: " << mstack.top() << std::endl;
 		std::cout << "Top of mstack2: " << mstack2.top() << std::endl;
@@ -97,8 +100,8 @@ int main( )
 		mstack3.push(4);
 		mstack3.push(5);
 		std::cout << "Top of mstack: " << mstack.top() << std::endl;
-		std::cout << "Top of mstack2: " <<  mstack2.top() << std::endl;
-		std::cout << "Top of mstack3: " <<  mstack3.top() << std::endl;
+		std::cout << "Top of mstack2: " << mstack2.top() << std::endl;
+		std::cout << "Top of mstack3: " << mstack3.top() << std::endl;
 		MutantStack<int>::reverse_iterator it = mstack3.rbegin();
 		MutantStack<int>::reverse_iterator ite = mstack3.rend();
 		++it;
