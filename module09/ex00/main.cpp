@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:37:54 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/22 17:24:33 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:27:05 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ std::multimap<std::string, float> &parseInput(char *filename)
 		}
 		else
 		{
-			inputMap.insert(std::make_pair("Error", 0.0f));
+			inputMap.insert(std::make_pair("Error: bad input", 0.0f));
 		}
 	}
 	file.close();
