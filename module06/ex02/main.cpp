@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:49:17 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/15 17:40:35 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:58:01 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 #include "B.hpp"
 #include "C.hpp"
 
-Base*	generate( void ) {
+Base *generate(void)
+{
 	std::srand(static_cast<unsigned int>(std::time(NULL)));
 
-	int	choice = std::rand() % 3;
+	int choice = std::rand() % 3;
 
 	switch (choice)
 	{
@@ -40,51 +41,60 @@ Base*	generate( void ) {
 	}
 }
 
-void	identify(Base* p) {
-	if (dynamic_cast<A*>(p))
+void identify(Base *p)
+{
+	if (dynamic_cast<A *>(p))
 		std::cout << "Object is of type A" << std::endl;
-	else if (dynamic_cast<B*>(p))
+	else if (dynamic_cast<B *>(p))
 		std::cout << "Object is of type B" << std::endl;
-	else if (dynamic_cast<C*>(p))
+	else if (dynamic_cast<C *>(p))
 		std::cout << "Object is of type C" << std::endl;
 	else
 		std::cout << "Object is of unknown type" << std::endl;
 }
 
-void	identify(Base& p) {
-	try {
-		(void)dynamic_cast<A&>(p);
+void identify(Base &p)
+{
+	try
+	{
+		(void)dynamic_cast<A &>(p);
 		std::cout << "Reference is of type A" << std::endl;
-		return ;
+		return;
 	}
-	catch (std::exception &bc) {
+	catch (std::exception &bc)
+	{
 		std::cout << "Reference is not of type A" << std::endl;
 	}
 
-	try {
-		(void)dynamic_cast<B&>(p);
+	try
+	{
+		(void)dynamic_cast<B &>(p);
 		std::cout << "Reference is of type B" << std::endl;
-		return ;
+		return;
 	}
-	catch (std::exception &bc) {
+	catch (std::exception &bc)
+	{
 		std::cout << "Reference is not of type B" << std::endl;
 	}
 
-	try {
-		(void)dynamic_cast<C&>(p);
+	try
+	{
+		(void)dynamic_cast<C &>(p);
 		std::cout << "Reference is of type C" << std::endl;
-		return ;
+		return;
 	}
-	catch (std::exception &bc) {
+	catch (std::exception &bc)
+	{
 		std::cout << "Reference is not of type C" << std::endl;
 	}
 
 	std::cout << "Reference is of unknown type" << std::endl;
 }
 
-int main(void) {
-	Base*	base;
-	
+int main(void)
+{
+	Base *base;
+
 	base = generate();
 	std::cout << base << std::endl;
 

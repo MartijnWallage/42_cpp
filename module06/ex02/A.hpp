@@ -6,13 +6,13 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:46:27 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/15 16:46:48 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:57:43 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "Base.hpp"
 
-class A : public Base {
-
+class A : public Base
+{
 };

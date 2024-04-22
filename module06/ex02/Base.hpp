@@ -6,14 +6,15 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:41:08 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/15 17:26:41 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:57:51 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 
-class Base {
-	public:
-		virtual ~Base( void );
+class Base
+{
+public:
+	virtual ~Base(void);
 };
