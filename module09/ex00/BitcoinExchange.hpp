@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:37:51 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/22 15:21:55 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:05:13 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <sstream>
 #include <map>
 #include <string>
+#include <cstdlib>
+#include <utility>
 
 // Let's use maps for this
 // Associate dates with values
