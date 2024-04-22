@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 19:41:29 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/07 17:26:23 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:00:02 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,22 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-class Intern {
-	public:
-		Intern( void );
-		Intern( Intern const & );
-		Intern& operator=( Intern const & );
-		~Intern( void );
+class Intern
+{
+public:
+	Intern(void);
+	Intern(Intern const &);
+	Intern &operator=(Intern const &);
+	~Intern(void);
 
-		AForm* makeForm(std::string form, std::string target);
+	AForm *makeForm(std::string form, std::string target);
 
-		class InvalidFormRequestException: public std::exception {
-			virtual const char* what() const throw();
-		};
+	class InvalidFormRequestException : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
 };
 
-AForm*	makeShrubbery( std::string target );
-AForm*	makePresidential( std::string target );
-AForm*	makeRobotomy( std::string target );
+AForm *makeShrubbery(std::string target);
+AForm *makePresidential(std::string target);
+AForm *makeRobotomy(std::string target);

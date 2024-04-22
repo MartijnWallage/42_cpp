@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:25:13 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/06 18:30:21 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:00:16 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,19 @@
 #include <iostream>
 #include <stdexcept>
 
-class PresidentialPardonForm : public AForm {
-	private:
-		std::string	_target;
+class PresidentialPardonForm : public AForm
+{
+private:
+	std::string _target;
 
-		PresidentialPardonForm( void );
-		void	beExecuted( Bureaucrat const &bureaucrat ) const;
-	public:
-		PresidentialPardonForm( std::string target );
-		PresidentialPardonForm( PresidentialPardonForm const & );
-		PresidentialPardonForm& operator=( PresidentialPardonForm const & );
-		~PresidentialPardonForm( void );
+	PresidentialPardonForm(void);
+	void beExecuted(Bureaucrat const &bureaucrat) const;
 
-		std::string	getTarget( void ) const;
+public:
+	PresidentialPardonForm(std::string target);
+	PresidentialPardonForm(PresidentialPardonForm const &);
+	PresidentialPardonForm &operator=(PresidentialPardonForm const &);
+	~PresidentialPardonForm(void);
 
+	std::string getTarget(void) const;
 };

@@ -12,42 +12,43 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm( void )
-: AForm("PresidentialPardonForm", 25, 5), _target("default target")
+PresidentialPardonForm::PresidentialPardonForm(void)
+	: AForm("PresidentialPardonForm", 25, 5), _target("default target")
 {
 	std::cout << "Default PresidentialPardonForm created" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm( std::string target )
-: AForm("PresidentialPardonForm", 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target)
+	: AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
 	std::cout << "PresidentialPardonForm with target " << _target
-		<< " created" << std::endl;
+			  << " created" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const & other )
-: _target(other._target)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other)
+	: _target(other._target)
 {
 	std::cout << "PresidentialPardonForm with target " << _target
-		<< " copy constructed" << std::endl;
+			  << " copy constructed" << std::endl;
 }
 
-PresidentialPardonForm& PresidentialPardonForm::operator=( PresidentialPardonForm const & )
+PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &)
 {
 	return *this;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm( void )
+PresidentialPardonForm::~PresidentialPardonForm(void)
 {
 	std::cout << "PresidentialPardonForm with target " << _target
-		<< " destroyed" << std::endl;
+			  << " destroyed" << std::endl;
 }
 
-std::string PresidentialPardonForm::getTarget( void ) const {
+std::string PresidentialPardonForm::getTarget(void) const
+{
 	return _target;
 }
 
-void PresidentialPardonForm::beExecuted( Bureaucrat const & ) const
+void PresidentialPardonForm::beExecuted(Bureaucrat const &) const
 {
 	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:25:13 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/06 19:20:24 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:59:37 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,19 @@
 #include <stdexcept>
 #include <cstdlib>
 
-class RobotomyRequestForm : public AForm {
-	private:
-		std::string	_target;
-		
-		RobotomyRequestForm( void );
-		void	beExecuted( Bureaucrat const &bureaucrat ) const;
-	public:
-		RobotomyRequestForm( std::string target );
-		RobotomyRequestForm( RobotomyRequestForm const & );
-		RobotomyRequestForm& operator=( RobotomyRequestForm const & );
-		~RobotomyRequestForm( void );
+class RobotomyRequestForm : public AForm
+{
+private:
+	std::string _target;
 
-		std::string	getTarget( void ) const;
+	RobotomyRequestForm(void);
+	void beExecuted(Bureaucrat const &bureaucrat) const;
 
+public:
+	RobotomyRequestForm(std::string target);
+	RobotomyRequestForm(RobotomyRequestForm const &);
+	RobotomyRequestForm &operator=(RobotomyRequestForm const &);
+	~RobotomyRequestForm(void);
+
+	std::string getTarget(void) const;
 };

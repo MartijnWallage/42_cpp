@@ -18,19 +18,19 @@
 #include <stdexcept>
 #include <fstream>
 
+class ShrubberyCreationForm : public AForm
+{
+private:
+	std::string _target;
 
-class ShrubberyCreationForm : public AForm {
-	private:
-		std::string	_target;
+	ShrubberyCreationForm(void);
+	void beExecuted(Bureaucrat const &bureaucrat) const;
 
-		ShrubberyCreationForm( void );
-		void	beExecuted( Bureaucrat const &bureaucrat ) const;
-	public:
-		ShrubberyCreationForm( std::string target );
-		ShrubberyCreationForm( ShrubberyCreationForm const & );
-		ShrubberyCreationForm& operator=( ShrubberyCreationForm const & );
-		~ShrubberyCreationForm( void );
+public:
+	ShrubberyCreationForm(std::string target);
+	ShrubberyCreationForm(ShrubberyCreationForm const &);
+	ShrubberyCreationForm &operator=(ShrubberyCreationForm const &);
+	~ShrubberyCreationForm(void);
 
-		std::string	getTarget( void ) const;
-
+	std::string getTarget(void) const;
 };
