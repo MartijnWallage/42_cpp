@@ -3,73 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:52:48 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/22 19:54:11 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:56:44 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-int parseNbr( std::stringstream & ss, std::stack<int> & stack)
+int parseOp(char &c, std::stack<int> &stack)
 {
-	int nbr;
-
-	ss >> nbr;
-	if (ss.fail()) {
-		std::cerr << "Error" << std::endl;
+	if (stack.size() != 2)
+	{
+		std::cerr << "Error: wrong number of operands for operator '" << c << "'." << std::endl;
 		return 0;
 	}
-	stack.push(nbr);
-	return 1;
-}
+	int nbrs[2];
 
-int parseOp( std::stringstream & ss, std::stack<int> & stack)
-{
-	char op;
-
-	ss >> op;
-	if (ss.fail()) {
-		std::cerr << "Error" << std::endl;
+	nbrs[1] = stack.top();
+	stack.pop();
+	nbrs[0] = stack.top();
+	stack.pop();
+	if (c == '+')
+		stack.push(nbrs[0] + nbrs[1]);
+	else if (c == '-')
+		stack.push(nbrs[0] - nbrs[1]);
+	else if (c == '/')
+		stack.push(nbrs[0] / nbrs[1]);
+	else if (c == '*')
+		stack.push(nbrs[0] * nbrs[1]);
+	else
+	{
+		std::cerr << "Error: invalid operator" << std::endl;
 		return 0;
 	}
+
 	return 1;
 }
 
 int main(int argc, char *argv[])
 {
-	if (argc != 1)
+	if (argc != 2)
 	{
 		std::cerr << "Format: ./RPN \" <int> <int> <operator> <int> <operator> <etc.>\"" << std::endl;
 		return 1;
 	}
 
-	// check valid input
-
 	std::stack<int> stack;
-	std::stringstream ss(argv[1]);
-	int		nbr;
-	char	op;
+	std::string input(argv[1]);
 
-	if (!parseNbr(ss, stack))
-		return 1;
-
-	bool expectingNbr = true;
-	while (!ss.eof()) {
-		if (expectingNbr) {
-			if (!parseNbr(ss, stack))
-				return 1;
-		} else {
-			if (!parseOp(ss, stack))
-				return 1;
+	bool expectingSpace = false;
+	for (size_t i = 0; i < input.length(); i++)
+	{
+		if ((expectingSpace && input[i] != ' ') || (!expectingSpace && input[i] == ' '))
+		{
+			std::cerr << "Error: invalid spacing" << std::endl;
+			return 1;
 		}
-		expectingNbr != expectingNbr;
+		expectingSpace = !expectingSpace;
+		if (input[i] == ' ')
+			continue;
+		else if (std::isdigit(input[i]))
+			stack.push(input[i] - '0');
+		else if (!parseOp(input[i], stack))
+			return 1;
 	}
-	if (stack.size() != 1) {
-		std::cerr << "Error" << std::endl;
+
+	if (stack.size() != 1)
+	{
+		std::cerr << "Error: failed to end with one solution" << std::endl;
 		return 1;
 	}
 	std::cout << stack.top() << std::endl;
+
 	return 0;
 }
