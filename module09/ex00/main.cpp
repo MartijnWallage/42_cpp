@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:37:54 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/22 17:27:05 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:43:01 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,46 +51,6 @@ std::multimap<std::string, float> &parseInput(char *filename)
 	return inputMap;
 }
 
-std::map<std::string, float> &parseData(void)
-{
-
-	std::ifstream file("data.csv");
-	if (!file.is_open())
-	{
-		std::cerr << "Failed to open data.csv." << std::endl;
-		std::exit(2);
-	}
-
-	std::string firstline;
-	std::getline(file, firstline);
-	if (firstline != "date,exchange_rate")
-	{
-		std::cerr << "Error parsing first line in data.csv." << std::endl;
-		file.close();
-		std::exit(2);
-	}
-
-	static std::map<std::string, float> dataMap;
-	std::string line;
-	while (std::getline(file, line))
-	{
-		std::istringstream iss(line);
-		std::string date;
-		float value;
-		if (std::getline(iss, date, ',') && iss >> value)
-		{
-			dataMap[date] = value;
-		}
-		else
-		{
-			std::cerr << "Error parsing line in database: " << line << std::endl;
-			file.close();
-			std::exit(2);
-		}
-	}
-	file.close();
-	return dataMap;
-}
 
 int main(int argc, char *argv[])
 {
