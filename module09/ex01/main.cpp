@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:52:48 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/23 16:10:03 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:32:23 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int main(int argc, char *argv[])
 {
-	if (argc != 2)
+	if (argc != 2 || argv[1][0] == '\0')
 	{
-		std::cerr << "Format: ./RPN \"<digit> <digit> <operator>\"" << std::endl;
+		std::cerr << "Format: ./RPN \"<digit> <digit> <operator> ...\"" << std::endl;
 		return 1;
 	}
 

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:07:59 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/22 14:27:06 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:31:15 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int argc, char *argv[])
 {
-	if (argc < 2)
+	if (argc < 2 || argv[1] == "")
 	{
 		std::cerr << "Format: ./PmergeMe <int> <int> ... " << std::endl;
 		return 1;
