@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:37:54 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/23 16:43:01 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/23 18:45:02 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	std::multimap<std::string, float> &inputMap = parseInput(argv[1]);
-	std::map<std::string, float> &dataMap = parseData();
-
 	/* 	std::cout << "Data map:" << std::endl;
 		for (std::map<std::string, float>::iterator it = dataMap.begin(); it != dataMap.end(); ++it)
 		{
@@ -74,16 +71,11 @@ int main(int argc, char *argv[])
 			std::cout << "date: " << it->first << "value: " << it->second << std::endl;
 		} */
 
-	for (std::multimap<std::string, float>::iterator it = inputMap.begin(); it != inputMap.end(); ++it)
-	{
-		if (it->first.substr(0, 5) == "Error")
-			std::cout << it->first << std::endl;
-		else {
-			std::map<std::string, float>::iterator lo = dataMap.lower_bound(it->first);
-			if (lo != dataMap.begin())
-				--lo;
-			std::cout << it->first << " => " << it->second << " = " << it->second * lo->second << std::endl;
-		}
+	BitcoinExchange be(argv[1]);
+	try {
+		be.compute();
+	} catch (std::exception const & e) {
+		std::cout << e.what() << std::endl;
 	}
 
 	return 0;

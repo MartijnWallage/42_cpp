@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:37:51 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/23 16:57:23 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/23 18:51:41 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,16 @@
 
 class BitcoinExchange {
 	public:
-		BitcoinExchange( char const & filename);
-		BitcoinExchange( BitcoinExchange const & );
-		BitcoinExchange & operator=( BitcoinExchange const &);
+		BitcoinExchange( char const * filename);
 		~BitcoinExchange();
 
-		void compute() const;
+		void compute();
 	private:
+		BitcoinExchange( BitcoinExchange const & );
+		BitcoinExchange & operator=( BitcoinExchange const &);
+	
 		std::map<std::string, float> _dataMap;
+		std::ifstream _inputFile;
 		std::map<std::string, float> & _parseData();
 
 		class BadFileException : public std::exception {
