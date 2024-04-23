@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:52:30 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/23 16:16:24 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:25:22 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ typedef int (*funcPtr)(int, int);
 
 class RPN
 {
-private:
-	std::string _input;
-	std::stack<int> _stack;
-	void _parseOp(char &c);
-	funcPtr _getOp(char &c);
-
 public:
 	RPN(std::string input);
 	RPN(RPN const &);
@@ -32,6 +26,13 @@ public:
 	~RPN();
 
 	int computeResult(void);
+
+private:
+	std::string _input;
+	std::stack<int> _stack;
+	void _parseOp(char &c);
+	funcPtr _getOp(char &c);
+
 	class InvalidOperatorException : public std::exception
 	{
 		virtual const char *what() const throw();
