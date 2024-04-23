@@ -6,17 +6,18 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:52:48 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/23 16:04:51 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:10:03 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		std::cerr << "Format: ./RPN \"<int> <int> <operator>\"" << std::endl;
+		std::cerr << "Format: ./RPN \"<digit> <digit> <operator>\"" << std::endl;
 		return 1;
 	}
 
@@ -28,7 +29,8 @@ int main(int argc, char *argv[])
 	catch (std::exception const &e)
 	{
 		std::cerr << e.what() << std::endl;
-		return 1;
+		return 2;
 	}
+
 	return 0;
 }
