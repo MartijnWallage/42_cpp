@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:52:42 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/23 16:05:21 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:23:32 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,32 @@ RPN::~RPN()
 {
 }
 
+inline int sum(int a, int b) { return a + b; }
+
+inline int subtract(int a, int b) { return a - b; }
+
+inline int multiply(int a, int b) { return a * b; }
+
+inline int divide(int a, int b) { return a / b; }
+
+funcPtr RPN::_getOp(char &c)
+{
+	switch (c)
+	{
+	case '+':
+		return (&sum);
+	case '-':
+		return (&subtract);
+	case '*':
+		return (&multiply);
+	case '/':
+		return (&divide);
+	default:
+		throw InvalidOperatorException();
+	}
+	return NULL;
+}
+
 void RPN::_parseOp(char &c)
 {
 	if (_stack.size() < 2)
@@ -48,20 +74,9 @@ void RPN::_parseOp(char &c)
 	_stack.pop();
 	int left = _stack.top();
 	_stack.pop();
-	if (c == '+')
-		_stack.push(left + right);
-	else if (c == '-')
-		_stack.push(left - right);
-	else if (c == '/')
-	{
-		if (right == 0)
-			throw FloatingPointException();
-		_stack.push(left / right);
-	}
-	else if (c == '*')
-		_stack.push(left * right);
-	else
-		throw InvalidOperatorException();
+	if (right == 0 && c == '/')
+		throw FloatingPointException();
+	_stack.push(_getOp(c)(left, right));
 }
 
 int RPN::computeResult()
