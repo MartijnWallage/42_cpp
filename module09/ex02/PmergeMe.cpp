@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 19:08:15 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:25:34 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,18 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 	// push the second element of the first pair because it is lower than all other elements
 	ret.push_back(pairs[0][1]);
 
-	// push the first element of each pair
-	for (size_t i = 0; i < pairs.size(); i++)
-		ret.push_back(pairs[i][0]);
-
+	size_t lastJacobsthal = 1;
 	// insert the second element of each pair, in the Jacobsthal order
-	for (size_t i = 0; i < pairs.size(); i++)
-		_binarySearchInsert(ret, pairs[_getIndex(i)][1]);
+	for (size_t i = 1; i < pairs.size(); i++)
+	{
+		size_t j = _getIndex(i);
+		if (isJacobsthal(i))
+		{
+			for (--lastJacobsthal; lastJacobsthal < j; lastJacobsthal++)
+				ret.push_back(pairs[lastJacobsthal][0])
+		}
+		_binarySearchInsert(ret, pairs[j][1]);
+	}
 
 	// insert the last element in case it's odd.
 	if (vecSize % 2 == 1)
