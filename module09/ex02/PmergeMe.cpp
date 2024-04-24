@@ -3,32 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 15:25:19 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/24 18:25:45 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PMergeMe::PMergeMe( void )
-{
-}
-
-PMergeMe::PMergeMe(PMergeMe const &src) : _list(src._list), _vec(src._vec)
-{
-}
-
-PMergeMe PMergeMe::operator=(PMergeMe const &src)
-{
-	if (this != &src)
-	{
-		_list = src._list;
-		_vec = src._vec;
-	}
-	return *this;
-}
+PMergeMe::PMergeMe( void ) {}
 
 PMergeMe::~PMergeMe() {}
 
@@ -42,10 +26,38 @@ std::list<int> PMergeMe::mergeInsertSort(std::list<int> const & unsorted)
 	_numLst = unsorted;
 }
 
-
-void PMergeMe::_binarySearchInsert(std::vector<int>& mainChain, int i)
+size_t	jacobsthal(size_t n)
 {
-	
+	return (std::pow(2, n) - std::pow(-1, n)) / 3.0;
+}
+
+bool isJacobsthal(size_t n)
+{
+	size_t jacobsNumeral = std::pow(2, n) - std::pow(-1, n);
+	return jacobsNumeral % 3 == 0;
+}
+
+size_t PMergeMe::_getIndex(size_t i)
+{
+	if (isJacobsthal(i))
+		return jacobsthal(i + 1) - 1;
+	return i - 1;
+}
+
+void PMergeMe::_binarySearchInsert(std::vector<int>& mainChain, int b)
+{
+    int left = 0;
+    int right = mainChain.size() - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (mainChain[mid] < b) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    mainChain.insert(mainChain.begin() + left, b);
 }
 
 std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
@@ -77,13 +89,10 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 		ret.push_back(pairs[i][0]);
 
 	// insert the second element of each pair, in the Jacobsthal order
-	for (size_t i = 0; i < vecSize; i++)
-	{
-		size_t j = _indexVec[i];
-		_binarySearchInsert(ret, pairs[j][1]);
-	}
+	for (size_t i = 0; i < pairs.size(); i++)
+		_binarySearchInsert(ret, pairs[_getIndex(i)][1]);
 
-	// insert the last element in case it's odd. Not sure if this follows the algorithm.
+	// insert the last element in case it's odd.
 	if (vecSize % 2 == 1)
 		_binarySearchInsert(ret, _numVec[vecSize - 1]);
 

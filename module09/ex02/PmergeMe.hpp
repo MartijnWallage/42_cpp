@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:07 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 15:26:13 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/24 18:23:58 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <list>
 #include <algorithm>
 #include <array>
+#include <cmath>
 
 class PMergeMe
 {
@@ -30,12 +31,13 @@ private:
 	PMergeMe(PMergeMe const &);
 	PMergeMe operator=(PMergeMe const &);
 
+	std::array<int, 2> PMergeMe::_sortPairs(std::array<int, 2> pair1, std::array<int, 2> pair2);
+	
 	void _binarySearchInsert(std::vector<int>& mainChain, int i);
 	void _binarySearchInsert(std::list<int>& mainChain, int i);
-	size_t _getNextIndex(size_t) const;
-	
-	void _generateIndexVec(std::list<int>);
-	void _generateIndexVec(std::vector<int>);
+
+	size_t _getIndex(size_t i);
+
 	std::list<int> _numLst;
 	std::list<int> _indexLst;
 	std::vector<int> _numVec;
