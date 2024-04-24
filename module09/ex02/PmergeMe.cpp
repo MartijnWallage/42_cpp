@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 18:25:45 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:08:15 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@ PMergeMe::PMergeMe( void ) {}
 
 PMergeMe::~PMergeMe() {}
 
-std::array<int, 2> PMergeMe::_sortPairs(std::array<int, 2> pair1, std::array<int, 2> pair2)
-{
-	return pair1[0] > pair2[1] ? pair1: pair2;
-}
 
 std::list<int> PMergeMe::mergeInsertSort(std::list<int> const & unsorted)
 {
 	_numLst = unsorted;
+	return _numLst;
 }
 
 size_t	jacobsthal(size_t n)
@@ -60,24 +57,30 @@ void PMergeMe::_binarySearchInsert(std::vector<int>& mainChain, int b)
     mainChain.insert(mainChain.begin() + left, b);
 }
 
+bool PMergeMe::_sortPairs(std::array<int, 2> const & pair1, std::array<int, 2> const & pair2)
+{
+	return pair1[0] <= pair2[0];
+}
+
 std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 {
 	_numVec = unsorted;
 	size_t vecSize = _numVec.size();
 	
-	std::vector<std::array<int, 2>> pairs;
+	std::vector<std::array<int, 2> > pairs;
+
 
 	// create vector of pairs
-	for (size_t i = 0; i < vecSize - 2; i++)
+	for (size_t i = 0; i < vecSize / 2; i += 2)
 	{
-		if (_numVec[i] < _numVec[i + 1])
+		if (_numVec[i] > _numVec[i + 1])
 			std::swap(_numVec[i], _numVec[i + 1]);
 		std::array<int, 2> pair = {_numVec[i], _numVec[i + 1]};
 		pairs.push_back(pair);
 	}
 	
 	// sort vector of pairs according to the order of the first element in each pair
-	std::sort(pairs.begin(), pairs.end(), &_sortPairs);
+	std::sort(pairs.begin(), pairs.end(), _sortPairs);
 
 	std::vector<int> ret;
 
