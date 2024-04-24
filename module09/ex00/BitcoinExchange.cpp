@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:37:49 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 14:45:57 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:54:42 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,30 +97,22 @@ void BitcoinExchange::compute(const char *filename)
 	while (std::getline(_inputFile, line))
 	{
 		if (!_isValidInput(line))
-		{
 			std::cout << "Error: bad input => " << line << std::endl;
-			continue;
-		}
-
-		if (_value < 0)
-		{
+		else if (_value < 0)
 			std::cout << "Error: not a positive number." << std::endl;
-			continue;
-		}
 		else if (_value > 1000)
-		{
 			std::cout << "Error: too large a number." << std::endl;
-			continue;
-		}
-
-		std::map<std::string, float>::iterator lo = _dataMap.lower_bound(_date);
-		if (lo != _dataMap.begin())
-		{
-			--lo;
-			std::cout << _date << " => " << _value << " = " << _value * lo->second << std::endl;
-		}
 		else
-			std::cout << "Error: bad input => " << line << std::endl;
+		{
+			std::map<std::string, float>::iterator lo = _dataMap.lower_bound(_date);
+			if (lo != _dataMap.begin())
+			{
+				--lo;
+				std::cout << _date << " => " << _value << " = " << _value * lo->second << std::endl;
+			}
+			else
+				std::cout << "Error: cannot find corresponding data => " << line << std::endl;
+		}
 	}
 	_inputFile.close();
 }
