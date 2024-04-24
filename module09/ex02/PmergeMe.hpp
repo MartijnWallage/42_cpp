@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mwallage <mwallage@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:07 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 15:57:28 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:26:13 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <algorithm>
+#include <array>
 
 class PMergeMe
 {
 public:
-	PMergeMe(std::list<int> const &);
-	PMergeMe(std::vector<int> const &);
-	~PMergeMe();
+	PMergeMe(void);
+	~PMergeMe(void);
 
-	std::list<int> sort(std::list<int>);
-	std::vector<int> sort(std::vector<int>);
+	std::list<int> mergeInsertSort(std::list<int> const &);
+	std::vector<int> mergeInsertSort(std::vector<int> const &);
 
 private:
 	PMergeMe(PMergeMe const &);
@@ -31,7 +32,12 @@ private:
 
 	void _binarySearchInsert(std::vector<int>& mainChain, int i);
 	void _binarySearchInsert(std::list<int>& mainChain, int i);
-	int _getNextJacobsthal(int);
-	std::list<int> _list;
-	std::vector<int> _vec;
+	size_t _getNextIndex(size_t) const;
+	
+	void _generateIndexVec(std::list<int>);
+	void _generateIndexVec(std::vector<int>);
+	std::list<int> _numLst;
+	std::list<int> _indexLst;
+	std::vector<int> _numVec;
+	std::vector<int> _indexVec;
 };
