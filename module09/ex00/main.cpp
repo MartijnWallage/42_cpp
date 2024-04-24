@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:37:54 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/23 18:45:02 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:43:53 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ std::multimap<std::string, float> &parseInput(char *filename)
 	return inputMap;
 }
 
-
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
@@ -71,10 +70,13 @@ int main(int argc, char *argv[])
 			std::cout << "date: " << it->first << "value: " << it->second << std::endl;
 		} */
 
-	BitcoinExchange be(argv[1]);
-	try {
-		be.compute();
-	} catch (std::exception const & e) {
+	try
+	{
+		BitcoinExchange be;
+		be.compute(argv[1]);
+	}
+	catch (std::exception const &e)
+	{
 		std::cout << e.what() << std::endl;
 	}
 
