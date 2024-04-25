@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:07 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 19:07:13 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:53:54 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ private:
 
 	static bool _sortPairs(std::array<int, 2> const & pair1, std::array<int, 2> const & pair2);
 	
-	void _binarySearchInsert(std::vector<int>& mainChain, int i);
-	void _binarySearchInsert(std::list<int>& mainChain, int i);
-
+	static void _binarySearchInsert(int value, std::vector<int>& chain, size_t end);
 	static size_t _getIndex(size_t i);
 
 	std::list<int> _numLst;

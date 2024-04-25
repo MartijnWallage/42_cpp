@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 20:25:34 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/25 17:11:32 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,20 @@ size_t PMergeMe::_getIndex(size_t i)
 	return i - 1;
 }
 
-void PMergeMe::_binarySearchInsert(std::vector<int>& mainChain, int b)
+void PMergeMe::_binarySearchInsert(int value, std::vector<int>& chain, size_t end)
 {
     int left = 0;
-    int right = mainChain.size() - 1;
+    int right = end;
 
     while (left <= right) {
         int mid = left + (right - left) / 2;
-        if (mainChain[mid] < b) {
+        if (chain[mid] < value) {
             left = mid + 1;
         } else {
             right = mid - 1;
         }
     }
-    mainChain.insert(mainChain.begin() + left, b);
+    chain.insert(chain.begin() + left, value);
 }
 
 bool PMergeMe::_sortPairs(std::array<int, 2> const & pair1, std::array<int, 2> const & pair2)
@@ -73,7 +73,7 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 	// create vector of pairs
 	for (size_t i = 0; i < vecSize / 2; i += 2)
 	{
-		if (_numVec[i] > _numVec[i + 1])
+		if (_numVec[i] < _numVec[i + 1])
 			std::swap(_numVec[i], _numVec[i + 1]);
 		std::array<int, 2> pair = {_numVec[i], _numVec[i + 1]};
 		pairs.push_back(pair);
@@ -86,23 +86,26 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 
 	// push the second element of the first pair because it is lower than all other elements
 	ret.push_back(pairs[0][1]);
+	
+	// push all the first elements
+	for (size_t i = 0; i < vecSize / 2; i++)
+		ret.push_back(pairs[i][0]);
 
-	size_t lastJacobsthal = 1;
+	size_t currentPow = 1;
+	size_t lastIndex = 0;
 	// insert the second element of each pair, in the Jacobsthal order
 	for (size_t i = 1; i < pairs.size(); i++)
 	{
 		size_t j = _getIndex(i);
-		if (isJacobsthal(i))
-		{
-			for (--lastJacobsthal; lastJacobsthal < j; lastJacobsthal++)
-				ret.push_back(pairs[lastJacobsthal][0])
-		}
-		_binarySearchInsert(ret, pairs[j][1]);
+		if (j - lastIndex > 1)
+			++currentPow;
+		lastIndex = j;
+		_binarySearchInsert(pairs[j][1], ret, std::pow(2, currentPow) - 1);
 	}
 
 	// insert the last element in case it's odd.
-	if (vecSize % 2 == 1)
-		_binarySearchInsert(ret, _numVec[vecSize - 1]);
+//	if (vecSize % 2 == 1)
+//		_binarySearchInsert(_numVec[vecSize - 1], ret, pow(2, currentPow) - 1);
 
 	return ret;
 }
