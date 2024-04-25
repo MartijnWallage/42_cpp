@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/25 17:11:32 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/25 17:21:01 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ bool isJacobsthal(size_t n)
 size_t PMergeMe::_getIndex(size_t i)
 {
 	if (isJacobsthal(i))
+	{
+		std::cout << i << " is a jacobsthal number" << std::endl;
 		return jacobsthal(i + 1) - 1;
+	}
+	std::cout << i << " is not a jacobsthal number" << std::endl;
 	return i - 1;
 }
 
@@ -71,7 +75,7 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 
 
 	// create vector of pairs
-	for (size_t i = 0; i < vecSize / 2; i += 2)
+	for (size_t i = 0; i < vecSize; i += 2)
 	{
 		if (_numVec[i] < _numVec[i + 1])
 			std::swap(_numVec[i], _numVec[i + 1]);
@@ -79,8 +83,18 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 		pairs.push_back(pair);
 	}
 	
+	std::cout << "Unsorted pairs:" << std::endl;
+	for (size_t i = 0; i < pairs.size(); i++)
+		std::cout << pairs[i][0] << "," << pairs[i][1] << std::endl;
+	std::cout << std::endl;
+
 	// sort vector of pairs according to the order of the first element in each pair
 	std::sort(pairs.begin(), pairs.end(), _sortPairs);
+
+	std::cout << "Sorted pairs:" << std::endl;
+	for (size_t i = 0; i < pairs.size(); i++)
+		std::cout << pairs[i][0] << "," << pairs[i][1] << std::endl;
+	std::cout << std::endl;
 
 	std::vector<int> ret;
 
@@ -88,8 +102,13 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 	ret.push_back(pairs[0][1]);
 	
 	// push all the first elements
-	for (size_t i = 0; i < vecSize / 2; i++)
+	for (size_t i = 0; i < pairs.size(); i++)
 		ret.push_back(pairs[i][0]);
+		
+	std::cout << "Ret after pushing first elements:" << std::endl;
+	for (size_t i = 0; i < ret.size(); i++)
+		std::cout << ret[i] << std::endl;
+	std::cout << std::endl;
 
 	size_t currentPow = 1;
 	size_t lastIndex = 0;
@@ -97,6 +116,7 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 	for (size_t i = 1; i < pairs.size(); i++)
 	{
 		size_t j = _getIndex(i);
+		std::cout << "Index is: " << j << std::endl;
 		if (j - lastIndex > 1)
 			++currentPow;
 		lastIndex = j;
