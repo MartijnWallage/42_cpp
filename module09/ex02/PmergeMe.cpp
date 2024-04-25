@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/25 17:21:01 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/25 17:26:38 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ size_t	jacobsthal(size_t n)
 
 bool isJacobsthal(size_t n)
 {
+	// incorrect. Wrong answer for n = 2;
+	// closed form may work for jacobsthal numbers but not to determine whether a number is jacobsthal
 	size_t jacobsNumeral = std::pow(2, n) - std::pow(-1, n);
 	return jacobsNumeral % 3 == 0;
 }
