@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/25 17:26:38 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/27 14:35:06 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,16 +113,23 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 	std::cout << std::endl;
 
 	size_t currentPow = 1;
-	size_t lastIndex = 0;
+	size_t jacobsthal[3] = {0, 1, 1};
 	// insert the second element of each pair, in the Jacobsthal order
 	for (size_t i = 1; i < pairs.size(); i++)
 	{
-		size_t j = _getIndex(i);
+		size_t j;
+		if (i == jacobsthal[1])
+		{
+			jacobsthal[0] = jacobsthal[1];
+			jacobsthal[1] = jacobsthal[2];
+			jacobsthal[2] = 2 * jacobsthal[0] + jacobsthal[1];
+			j = jacobsthal[2] - 1;
+			currentPow++;
+		}
+		else
+			j = i - 1;
 		std::cout << "Index is: " << j << std::endl;
-		if (j - lastIndex > 1)
-			++currentPow;
-		lastIndex = j;
-		_binarySearchInsert(pairs[j][1], ret, std::pow(2, currentPow) - 1);
+		_binarySearchInsert(pairs[j][1], ret, ret.size());
 	}
 
 	// insert the last element in case it's odd.
