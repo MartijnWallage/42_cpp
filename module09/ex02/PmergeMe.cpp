@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/27 14:35:06 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/27 14:36:26 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 	for (size_t i = 1; i < pairs.size(); i++)
 	{
 		size_t j;
-		if (i == jacobsthal[1])
+		if (i == jacobsthal[2])
 		{
 			jacobsthal[0] = jacobsthal[1];
 			jacobsthal[1] = jacobsthal[2];
