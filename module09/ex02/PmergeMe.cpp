@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/27 14:36:26 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/27 23:19:52 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,29 +107,30 @@ std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const & unsorted)
 	for (size_t i = 0; i < pairs.size(); i++)
 		ret.push_back(pairs[i][0]);
 		
-	std::cout << "Ret after pushing first elements:" << std::endl;
+/* 	std::cout << "Ret after pushing first elements:" << std::endl;
 	for (size_t i = 0; i < ret.size(); i++)
 		std::cout << ret[i] << std::endl;
-	std::cout << std::endl;
+	std::cout << std::endl; */
 
-	size_t currentPow = 1;
-	size_t jacobsthal[3] = {0, 1, 1};
+	size_t currentPow = 2;
+	size_t jacobsthal[2] = {1, 3}; //  1 3 5 11 21
 	// insert the second element of each pair, in the Jacobsthal order
-	for (size_t i = 1; i < pairs.size(); i++)
+	while (jacobsthal[0] < pairs.size())
 	{
-		size_t j;
-		if (i == jacobsthal[2])
+		for (size_t j = std::min(jacobsthal[1], pairs.size()); j != jacobsthal[0]; j--)
 		{
-			jacobsthal[0] = jacobsthal[1];
-			jacobsthal[1] = jacobsthal[2];
-			jacobsthal[2] = 2 * jacobsthal[0] + jacobsthal[1];
-			j = jacobsthal[2] - 1;
-			currentPow++;
+			std::cout << "pairs[" << j - 1 << "] is " << pairs[j - 1][1] << std::endl;
+			if (j - 1 < pairs.size()) {
+				size_t endRange = pow(2, currentPow) - 1;
+				endRange = std::min(endRange, ret.size() - 1);
+				std::cout << "Range is from 0 to " << endRange << std::endl;
+				_binarySearchInsert(pairs[j - 1][1], ret, endRange);
+			}
 		}
-		else
-			j = i - 1;
-		std::cout << "Index is: " << j << std::endl;
-		_binarySearchInsert(pairs[j][1], ret, ret.size());
+		size_t nextJacobsthal = jacobsthal[0] * 2 + jacobsthal[1];
+		jacobsthal[0] = jacobsthal[1];
+		jacobsthal[1] = nextJacobsthal;
+		++currentPow;
 	}
 
 	// insert the last element in case it's odd.
