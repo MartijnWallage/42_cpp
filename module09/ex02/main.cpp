@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:07:59 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/29 12:58:20 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:51:35 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
 		std::cout << std::endl
 				  << "Using vector: " << std::endl;
-		PmergeMe<std::vector<int>, std::vector<std::vector<int>>> merge;
+		PmergeMe<std::vector<int> > merge;
 		std::vector<int> sortedVec = merge.mergeInsertSort(unsortedVec);
 
 		for (std::vector<int>::iterator it = sortedVec.begin(); it != sortedVec.end(); ++it)
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 			unsortedLst.push_back(nbr);
 		}
 
-		PmergeMe<std::deque<int>, std::deque<std::deque<int> > > mergeLst;
+		PmergeMe<std::deque<int>, std::deque<intPair> > mergeLst;
 		std::deque<int> sortedLst = mergeLst.mergeInsertSort(unsortedLst);
 
 		for (std::deque<int>::iterator it = sortedLst.begin(); it != sortedLst.end(); ++it)
