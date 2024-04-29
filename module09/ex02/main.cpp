@@ -6,10 +6,12 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:07:59 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/29 13:51:35 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:24:40 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ctime>
+#include <iomanip>
 #include "PmergeMe.hpp"
 
 int main(int argc, char *argv[])
@@ -22,41 +24,96 @@ int main(int argc, char *argv[])
 
 	{
 		std::vector<int> unsortedVec;
+		std::cout << "Before:\t\t";
+		for (int i = 1; i < argc; i++)
+		{
+			int nbr = std::atoi(argv[i]);
+			unsortedVec.push_back(nbr);
+			std::cout << std::fixed << *(unsortedVec.end() - 1) << " ";
+		}
+		std::cout << std::endl;
+
+		clock_t start = clock();
+		PmergeMe<std::vector<int> > merge;
+		std::vector<int> sortedVec = merge.mergeInsertSort(unsortedVec);
+		clock_t end = clock();
+
+		std::cout << "After:\t\t";
+		for (std::vector<int>::iterator it = sortedVec.begin(); it != sortedVec.end(); ++it)
+		{
+			std::cout << std::fixed << *it << " ";
+		}
+		std::cout << std::endl;
+
+		double duration = (double)(end - start) / CLOCKS_PER_SEC * 1e6;
+		std::cout << "Time to process a range of " << sortedVec.size() << " elements with std::vector : ";
+		std::cout << std::fixed << std::setprecision(5) << duration << " us" << std::endl;
+	}
+
+	{
+		std::vector<int> unsortedVec;
 		for (int i = 1; i < argc; i++)
 		{
 			int nbr = std::atoi(argv[i]);
 			unsortedVec.push_back(nbr);
 		}
 
-		std::cout << std::endl
-				  << "Using vector: " << std::endl;
+		clock_t start = clock();
 		PmergeMe<std::vector<int> > merge;
 		std::vector<int> sortedVec = merge.mergeInsertSort(unsortedVec);
+		clock_t end = clock();
 
-		for (std::vector<int>::iterator it = sortedVec.begin(); it != sortedVec.end(); ++it)
-		{
-			std::cout << *it << std::endl;
-		}
+		double duration = (double)(end - start) / CLOCKS_PER_SEC * 1e6;
+		std::cout << "Time to process a range of " << sortedVec.size() << " elements with std::vector : ";
+		std::cout << std::fixed << std::setprecision(5) << duration << " us" << std::endl;
 	}
 
 	{
-		std::cout << std::endl
-				  << "Using deque: " << std::endl;
+		std::deque<int> unsortedDeq;
 
-		std::deque<int> unsortedLst;
+		std::cout << "Before:\t\t";
 		for (int i = 1; i < argc; i++)
 		{
 			int nbr = std::atoi(argv[i]);
-			unsortedLst.push_back(nbr);
+			unsortedDeq.push_back(nbr);
+			std::cout << std::fixed << *(unsortedDeq.end() - 1) << " ";
 		}
+		std::cout << std::endl;
 
-		PmergeMe<std::deque<int>, std::deque<intPair> > mergeLst;
-		std::deque<int> sortedLst = mergeLst.mergeInsertSort(unsortedLst);
+		clock_t start = clock();
+		PmergeMe<std::deque<int>, std::deque<intPair> > mergeDeq;
+		std::deque<int> sortedDeq = mergeDeq.mergeInsertSort(unsortedDeq);
+		clock_t end = clock();
 
-		for (std::deque<int>::iterator it = sortedLst.begin(); it != sortedLst.end(); ++it)
+		std::cout << "After:\t\t";
+		for (std::deque<int>::iterator it = sortedDeq.begin(); it != sortedDeq.end(); ++it)
 		{
-			std::cout << *it << std::endl;
+			std::cout << std::fixed << *it << " ";
 		}
+		std::cout << std::endl;
+
+		double duration = (double)(end - start) / CLOCKS_PER_SEC * 1e6;
+		std::cout << "Time to process a range of " << sortedDeq.size() << " elements with std::deque : ";
+		std::cout << std::fixed << std::setprecision(5) << duration << " us" << std::endl;
 	}
+
+	{
+		std::deque<int> unsortedDeq;
+		for (int i = 1; i < argc; i++)
+		{
+			int nbr = std::atoi(argv[i]);
+			unsortedDeq.push_back(nbr);
+		}
+
+		clock_t start = clock();
+		PmergeMe<std::deque<int>, std::deque<intPair> > mergeDeq;
+		std::deque<int> sortedDeq = mergeDeq.mergeInsertSort(unsortedDeq);
+		clock_t end = clock();
+
+		double duration = (double)(end - start) / CLOCKS_PER_SEC * 1e6;
+		std::cout << "Time to process a range of " << sortedDeq.size() << " elements with std::deque : ";
+		std::cout << std::fixed << std::setprecision(5) << duration << " us" << std::endl;
+	}
+
 	return 0;
 }

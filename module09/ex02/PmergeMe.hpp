@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:07 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/29 14:37:02 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:02:48 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,8 @@ public:
 			std::advance(nextIt, 2);
 		}
 
-		std::cout << "Unsorted pairs:" << std::endl;
-		for (typename Pairs::iterator it = pairs.begin(); it != pairs.end(); ++it)
-			std::cout << it->first << "," << it->second << std::endl;
-		std::cout << std::endl;
-
 		// sort vector of pairs according to the order of the first element in each pair
 		std::sort(pairs.begin(), pairs.end(), _sortPairs);
-
-		std::cout << "Sorted pairs:" << std::endl;
-		for (typename Pairs::iterator it = pairs.begin(); it != pairs.end(); ++it)
-			std::cout << it->first << "," << it->second << std::endl;
-		std::cout << std::endl;
 
 		Container ret;
 
@@ -81,12 +71,10 @@ public:
 		{
 			for (size_t j = std::min(jacobsthal[1], pairs.size()); j != jacobsthal[0]; j--)
 			{
-				std::cout << "pairs[" << j - 1 << "] is " << (pairs.begin() + j - 1)->second << std::endl;
 				if (j - 1 < pairs.size())
 				{
 					size_t endRange = pow(2, currentPow) - 1;
 					endRange = std::min(endRange, ret.size() - 1);
-					std::cout << "Range is from 0 to " << endRange << std::endl;
 					_binarySearchInsert(ret, (pairs.begin() + j - 1)->second, endRange);
 				}
 			}
@@ -98,7 +86,7 @@ public:
 
 		// insert the last element in case it's odd.
 		if (vecSize % 2 == 1)
-			_binarySearchInsert(ret, _input[vecSize - 1], ret.size() - 1);
+			_binarySearchInsert(ret, *(_input.end() - 1), ret.size() - 1);
 
 		return ret;
 	}
@@ -114,38 +102,38 @@ private:
 
 	void _binarySearchInsert(Container &chain, int value, int endRange)
 	{
-/* 		int left = 0;
-		int right = endRange;
+		/* 		int left = 0;
+				int right = endRange;
 
-		while (left <= right)
-		{
-			int mid = left + (right - left) / 2;
-			if (chain[mid] < value)
-				left = mid + 1;
-			else
-				right = mid - 1;
-		}
-		chain.insert(chain.begin() + left, value); */
-
-				typename Container::iterator low = chain.begin();
-				typename Container::iterator high = chain.begin() + endRange;
-				while (low != high)
+				while (left <= right)
 				{
-					typename Container::iterator mid = low;
-					std::advance(mid, std::distance(low, high) / 2);
-
-					if (value < *mid)
-					{
-						high = mid;
-					}
+					int mid = left + (right - left) / 2;
+					if (chain[mid] < value)
+						left = mid + 1;
 					else
-					{
-						low = mid;
-						++low;
-					}
+						right = mid - 1;
 				}
+				chain.insert(chain.begin() + left, value); */
 
-				chain.insert(low, value);
+		typename Container::iterator low = chain.begin();
+		typename Container::iterator high = chain.begin() + endRange;
+		while (low != high)
+		{
+			typename Container::iterator mid = low;
+			std::advance(mid, std::distance(low, high) / 2);
+
+			if (value < *mid)
+			{
+				high = mid;
+			}
+			else
+			{
+				low = mid;
+				++low;
+			}
+		}
+
+		chain.insert(low, value);
 	}
 
 	Container _input;
