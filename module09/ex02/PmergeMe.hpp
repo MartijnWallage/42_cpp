@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:07 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/29 13:53:54 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:29:02 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 #include <algorithm>
 #include <deque>
 #include <cmath>
+#include <iterator>
 
-struct intPair {
+struct intPair
+{
 	int first;
 	int second;
 };
@@ -38,37 +40,39 @@ public:
 		Pairs pairs;
 
 		// create vector of pairs
-		for (size_t i = 0; i + 1 < vecSize; i += 2)
+		typename Container::iterator it = _input.begin();
+		typename Container::iterator nextIt = it + 1;
+		while (nextIt < _input.end())
 		{
-			if (_input[i] < _input[i + 1])
-				std::swap(_input[i], _input[i + 1]);
 			intPair pair;
-			pair.first = _input[i];
-			pair.second = _input[i + 1];
+			pair.first = std::max(*it, *nextIt);
+			pair.second = std::min(*it, *nextIt);
 			pairs.push_back(pair);
+			std::advance(it, 2);
+			std::advance(nextIt, 2);
 		}
 
 		std::cout << "Unsorted pairs:" << std::endl;
-		for (size_t i = 0; i < pairs.size(); i++)
-			std::cout << pairs[i].first << "," << pairs[i].second << std::endl;
+		for (typename Pairs::iterator it = pairs.begin(); it != pairs.end(); ++it)
+			std::cout << it->first << "," << it->second << std::endl;
 		std::cout << std::endl;
 
 		// sort vector of pairs according to the order of the first element in each pair
 		std::sort(pairs.begin(), pairs.end(), _sortPairs);
 
 		std::cout << "Sorted pairs:" << std::endl;
-		for (size_t i = 0; i < pairs.size(); i++)
-			std::cout << pairs[i].first << "," << pairs[i].second << std::endl;
+		for (typename Pairs::iterator it = pairs.begin(); it != pairs.end(); ++it)
+			std::cout << it->first << "," << it->second << std::endl;
 		std::cout << std::endl;
 
 		Container ret;
 
 		// push the second element of the first pair because it is lower than all other elements
-		ret.push_back(pairs[0].second);
+		ret.push_back(pairs.begin()->second);
 
 		// push all the first elements
-		for (size_t i = 0; i < pairs.size(); i++)
-			ret.push_back(pairs[i].first);
+		for (typename Pairs::iterator it = pairs.begin(); it != pairs.end(); ++it)
+			ret.push_back(it->first);
 
 		size_t currentPow = 2;
 		size_t jacobsthal[2] = {1, 3};
@@ -105,42 +109,43 @@ private:
 
 	static bool _sortPairs(intPair const &pair1, intPair const &pair2)
 	{
-		return pair1.first <= pair2.second;
+		return pair1.first <= pair2.first;
 	}
+
 	void _binarySearchInsert(Container &chain, int value, int endRange)
 	{
-				int left = 0;
-				int right = endRange;
+		int left = 0;
+		int right = endRange;
 
-				while (left <= right)
-				{
-					int mid = left + (right - left) / 2;
-					if (chain[mid] < value)
-						left = mid + 1;
-					else
-						right = mid - 1;
-				}
-				chain.insert(chain.begin() + left, value);
-
-/* 		typename Container::iterator low = chain.begin();
-		typename Container::iterator high = end;
-		while (low != high)
+		while (left <= right)
 		{
-			typename Container::iterator mid = low;
-			std::advance(mid, std::distance(low, high) / 2);
-
-			if (value < *mid)
-			{
-				high = mid;
-			}
+			int mid = left + (right - left) / 2;
+			if (chain[mid] < value)
+				left = mid + 1;
 			else
-			{
-				low = mid;
-				++low;
-			}
+				right = mid - 1;
 		}
+		chain.insert(chain.begin() + left, value);
 
-		chain.insert(low, value); */
+		/* 		typename Container::iterator low = chain.begin();
+				typename Container::iterator high = end;
+				while (low != high)
+				{
+					typename Container::iterator mid = low;
+					std::advance(mid, std::distance(low, high) / 2);
+
+					if (value < *mid)
+					{
+						high = mid;
+					}
+					else
+					{
+						low = mid;
+						++low;
+					}
+				}
+
+				chain.insert(low, value); */
 	}
 
 	Container _input;
