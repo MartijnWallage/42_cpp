@@ -29,14 +29,14 @@ int main(int argc, char *argv[])
 		{
 			int nbr = std::atoi(argv[i]);
 			unsortedVec.push_back(nbr);
-			std::cout << std::fixed << *(unsortedVec.end() - 1) << " ";
+			std::cout << std::fixed << unsortedVec.back() << " ";
 		}
 		std::cout << std::endl;
 
-		clock_t start = clock();
-		PmergeMe<std::vector<int> > merge;
+		PmergeMe merge;
+		merge.startTimer();
 		std::vector<int> sortedVec = merge.mergeInsertSort(unsortedVec);
-		clock_t end = clock();
+		merge.stopTimer();
 
 		std::cout << "After:\t\t";
 		for (std::vector<int>::iterator it = sortedVec.begin(); it != sortedVec.end(); ++it)
@@ -45,9 +45,8 @@ int main(int argc, char *argv[])
 		}
 		std::cout << std::endl;
 
-		double duration = (double)(end - start) / CLOCKS_PER_SEC * 1e6;
 		std::cout << "Time to process a range of " << sortedVec.size() << " elements with std::vector : ";
-		std::cout << std::fixed << std::setprecision(5) << duration << " us" << std::endl;
+		std::cout << std::fixed << std::setprecision(5) << merge.getTime() << " us" << std::endl;
 	}
 
 	{
@@ -58,17 +57,15 @@ int main(int argc, char *argv[])
 			unsortedVec.push_back(nbr);
 		}
 
-		clock_t start = clock();
-		PmergeMe<std::vector<int> > merge;
+		PmergeMe merge;
+		merge.startTimer();
 		std::vector<int> sortedVec = merge.mergeInsertSort(unsortedVec);
-		clock_t end = clock();
-
-		double duration = (double)(end - start) / CLOCKS_PER_SEC * 1e6;
+		merge.stopTimer();
 		std::cout << "Time to process a range of " << sortedVec.size() << " elements with std::vector : ";
-		std::cout << std::fixed << std::setprecision(5) << duration << " us" << std::endl;
+		std::cout << std::fixed << std::setprecision(5) << merge.getTime() << " us" << std::endl;
 	}
 
-	{
+/* 	{
 		std::deque<int> unsortedDeq;
 
 		std::cout << "Before:\t\t";
@@ -114,6 +111,36 @@ int main(int argc, char *argv[])
 		std::cout << "Time to process a range of " << sortedDeq.size() << " elements with std::deque : ";
 		std::cout << std::fixed << std::setprecision(5) << duration << " us" << std::endl;
 	}
+ */
+
+/* 	{
+		std::list<int> unsortedDeq;
+
+		std::cout << "Before:\t\t";
+		for (int i = 1; i < argc; i++)
+		{
+			int nbr = std::atoi(argv[i]);
+			unsortedDeq.push_back(nbr);
+			std::cout << std::fixed << unsortedDeq.back() << " ";
+		}
+		std::cout << std::endl;
+
+		clock_t start = clock();
+		PmergeMe<std::list<int>, std::list<intPair> > mergeDeq;
+		std::list<int> sortedDeq = mergeDeq.mergeInsertSort(unsortedDeq);
+		clock_t end = clock();
+
+		std::cout << "After:\t\t";
+		for (std::list<int>::iterator it = sortedDeq.begin(); it != sortedDeq.end(); ++it)
+		{
+			std::cout << std::fixed << *it << " ";
+		}
+		std::cout << std::endl;
+
+		double duration = (double)(end - start) / CLOCKS_PER_SEC * 1e6;
+		std::cout << "Time to process a range of " << sortedDeq.size() << " elements with std::deque : ";
+		std::cout << std::fixed << std::setprecision(5) << duration << " us" << std::endl;
+	} */
 
 	return 0;
 }
