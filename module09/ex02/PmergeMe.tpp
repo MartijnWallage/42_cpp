@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*   PmergeMe.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/29 12:05:10 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/29 12:45:03 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
 
-PMergeMe::PMergeMe(void) {}
-
-PMergeMe::~PMergeMe() {}
-
-std::list<int> PMergeMe::mergeInsertSort(std::list<int> const &unsorted)
-{
-	_numLst = unsorted;
-	return _numLst;
-}
-
-template <typename C>
-void PMergeMe::_binarySearchInsert(C &chain, int value, int end)
+template <typename C = std::vector<int> >
+void PmergeMe::_binarySearchInsert(C &chain, int value, int end)
 {
 	int left = 0;
 	int right = end;
@@ -39,24 +28,26 @@ void PMergeMe::_binarySearchInsert(C &chain, int value, int end)
 	chain.insert(chain.begin() + left, value);
 }
 
-bool PMergeMe::_sortPairs(std::array<int, 2> const &pair1, std::array<int, 2> const &pair2)
+bool PmergeMe::_sortPairs(std::vector<int> const &pair1, std::vector<int> const &pair2)
 {
 	return pair1[0] <= pair2[0];
 }
 
-std::vector<int> PMergeMe::mergeInsertSort(std::vector<int> const &unsorted)
+std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> const &unsorted)
 {
 	_numVec = unsorted;
 	size_t vecSize = _numVec.size();
 
-	std::vector<std::array<int, 2>> pairs;
+	std::vector<std::vector<int> > pairs;
 
 	// create vector of pairs
 	for (size_t i = 0; i + 1 < vecSize; i += 2)
 	{
 		if (_numVec[i] < _numVec[i + 1])
 			std::swap(_numVec[i], _numVec[i + 1]);
-		std::array<int, 2> pair = {_numVec[i], _numVec[i + 1]};
+		std::vector<int> pair;
+		pair.push_back(_numVec[i]);
+		pair.push_back(_numVec[i + 1]);
 		pairs.push_back(pair);
 	}
 

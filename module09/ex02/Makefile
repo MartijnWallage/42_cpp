@@ -6,14 +6,13 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 14:22:58 by mwallage          #+#    #+#              #
-#    Updated: 2024/04/29 11:45:56 by mwallage         ###   ########.fr        #
+#    Updated: 2024/04/29 12:41:12 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPP		:= c++
 FLAGS	:= -Wall -Wextra -Werror -g
-SRC		:= main.cpp \
-			PmergeMe.cpp
+SRC		:= main.cpp
 OBJ		:= $(SRC:.cpp=.o)
 HPP		:= PmergeMe.hpp
 EXEC	:= PmergeMe
