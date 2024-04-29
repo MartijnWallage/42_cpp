@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:07 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/29 14:29:02 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:37:02 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ public:
 		{
 			for (size_t j = std::min(jacobsthal[1], pairs.size()); j != jacobsthal[0]; j--)
 			{
-				std::cout << "pairs[" << j - 1 << "] is " << pairs[j - 1].second << std::endl;
+				std::cout << "pairs[" << j - 1 << "] is " << (pairs.begin() + j - 1)->second << std::endl;
 				if (j - 1 < pairs.size())
 				{
 					size_t endRange = pow(2, currentPow) - 1;
 					endRange = std::min(endRange, ret.size() - 1);
 					std::cout << "Range is from 0 to " << endRange << std::endl;
-					_binarySearchInsert(ret, pairs[j - 1].second, endRange);
+					_binarySearchInsert(ret, (pairs.begin() + j - 1)->second, endRange);
 				}
 			}
 			size_t nextJacobsthal = jacobsthal[0] * 2 + jacobsthal[1];
@@ -114,7 +114,7 @@ private:
 
 	void _binarySearchInsert(Container &chain, int value, int endRange)
 	{
-		int left = 0;
+/* 		int left = 0;
 		int right = endRange;
 
 		while (left <= right)
@@ -125,10 +125,10 @@ private:
 			else
 				right = mid - 1;
 		}
-		chain.insert(chain.begin() + left, value);
+		chain.insert(chain.begin() + left, value); */
 
-		/* 		typename Container::iterator low = chain.begin();
-				typename Container::iterator high = end;
+				typename Container::iterator low = chain.begin();
+				typename Container::iterator high = chain.begin() + endRange;
 				while (low != high)
 				{
 					typename Container::iterator mid = low;
@@ -145,7 +145,7 @@ private:
 					}
 				}
 
-				chain.insert(low, value); */
+				chain.insert(low, value);
 	}
 
 	Container _input;
