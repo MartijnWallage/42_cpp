@@ -12,7 +12,8 @@
 
 CPP		:= c++
 FLAGS	:= -std=c++98 -Wall -Wextra -Werror -g
-SRC		:= main.cpp
+SRC		:= main.cpp \
+			PmergeMe.cpp
 OBJ		:= $(SRC:.cpp=.o)
 HPP		:= PmergeMe.hpp
 EXEC	:= PmergeMe

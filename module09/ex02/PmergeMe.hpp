@@ -41,7 +41,8 @@ public:
 
 		// create vector of pairs
 		typename Container::iterator it = _input.begin();
-		typename Container::iterator nextIt = it + 1;
+		typename Container::iterator nextIt = it;
+		std::advance(nextIt, 1);
 		while (nextIt < _input.end())
 		{
 			intPair pair;
@@ -75,7 +76,9 @@ public:
 				{
 					size_t endRange = pow(2, currentPow) - 1;
 					endRange = std::min(endRange, ret.size() - 1);
-					_binarySearchInsert(ret, (pairs.begin() + j - 1)->second, endRange);
+					typename Pairs::iterator curr = pairs.begin();
+					std::advance(curr, j - 1);
+					_binarySearchInsert(ret, curr->second, endRange);
 				}
 			}
 			size_t nextJacobsthal = jacobsthal[0] * 2 + jacobsthal[1];
@@ -86,7 +89,7 @@ public:
 
 		// insert the last element in case it's odd.
 		if (vecSize % 2 == 1)
-			_binarySearchInsert(ret, *(_input.end() - 1), ret.size() - 1);
+			_binarySearchInsert(ret, _input.back(), ret.size());
 
 		return ret;
 	}
