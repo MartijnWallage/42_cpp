@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:37:51 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 14:42:33 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:46:37 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ private:
 	std::map<std::string, float> &_parseData();
 	bool _isValidDate(std::string const &);
 	bool _isValidInput(std::string const &line);
+	bool _isLeapYear(int year);
 
 	class BadInputException : public std::exception
 	{
