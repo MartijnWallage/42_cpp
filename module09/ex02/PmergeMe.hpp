@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:07 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/29 15:02:48 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/30 13:18:01 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 #include <deque>
 #include <cmath>
 #include <iterator>
-#include <type_traits>
 
-struct intPair
+struct IntPair
 {
 	int first;
 	int second;
@@ -47,9 +46,11 @@ private:
 	PmergeMe(PmergeMe const &);
 	PmergeMe operator=(PmergeMe const &);
 
-	static bool 			_sortPairs(intPair const &pair1, intPair const &pair2);
-	std::vector<intPair>	_createPairs(std::vector<int> const & ) const;
-	std::list<intPair>		_createPairs(std::list<int> const & ) const;
+	static void				_recursiveSort(std::vector<IntPair> & pairs, bool (*compare)(const IntPair, const IntPair));
+	static void				_recursiveSort(std::list<IntPair> & pairs, bool (*compare)(const IntPair, const IntPair));
+	static bool 			_sortPairs(IntPair const pair1, IntPair const pair2);
+	std::vector<IntPair>	_createPairs(std::vector<int> const & );
+	std::list<IntPair>		_createPairs(std::list<int> const & );
 	void 					_binarySearchInsert(std::vector<int> &chain, int value, int endRange);
 	void 					_binarySearchInsert(std::list<int> &chain, int value, int endRange);
 };
