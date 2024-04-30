@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/30 13:20:01 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:25:08 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,31 @@
 
 // public:
 
-void	PmergeMe::_recursiveSort(std::vector<IntPair> & pairs, bool (compare)(const IntPair, const IntPair))
+PmergeMe::PmergeMe()
 {
-	std::sort(pairs.begin(), pairs.end(), compare);
 }
 
-void	PmergeMe::_recursiveSort(std::list<IntPair> & pairs, bool (compare)(const IntPair, const IntPair))
+PmergeMe::~PmergeMe()
 {
-	pairs.sort(compare);
 }
 
-std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> const & input)
+PmergeMe::PmergeMe(PmergeMe const & other) : _beforeTime(other._beforeTime), _afterTime(other._afterTime), _inputVec(other._inputVec), _inputLst(other._inputLst)
+{
+}
+
+PmergeMe PmergeMe::operator=(PmergeMe const & other)
+{
+	if (this != &other)
+	{
+		_inputLst = other._inputLst;
+		_inputVec = other._inputVec;
+		_beforeTime = other._beforeTime;
+		_afterTime = other._afterTime;
+	}
+	return *this;
+}
+
+void PmergeMe::mergeInsertSort(std::vector<int> const & input)
 {
 	_inputVec = input;
 	size_t vecSize = _inputVec.size();
@@ -32,10 +46,10 @@ std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> const & input)
 	std::vector<IntPair> pairs = _createPairs(input);
 	_recursiveSort(pairs, _sortPairs);
 
-	std::vector<int> ret;
-	ret.push_back(pairs.begin()->second);
+	_sortedVec.clear();
+	_sortedVec.push_back(pairs.begin()->second);
 	for (std::vector<IntPair>::iterator it = pairs.begin(); it != pairs.end(); ++it)
-		ret.push_back(it->first);
+		_sortedVec.push_back(it->first);
 
 	size_t currentPow = 2;
 	size_t jacobsthal[2] = {1, 3};
@@ -46,10 +60,10 @@ std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> const & input)
 			if (j - 1 < pairs.size())
 			{
 				size_t endRange = pow(2, currentPow) - 1;
-				endRange = std::min(endRange, ret.size() - 1);
+				endRange = std::min(endRange, _sortedVec.size() - 1);
 				std::vector<IntPair>::iterator curr = pairs.begin();
 				std::advance(curr, j - 1);
-				_binarySearchInsert(ret, curr->second, endRange);
+				_binarySearchInsert(_sortedVec, curr->second, endRange);
 			}
 		}
 		size_t nextJacobsthal = jacobsthal[0] * 2 + jacobsthal[1];
@@ -59,9 +73,45 @@ std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> const & input)
 	}
 
 	if (vecSize % 2 == 1)
-		_binarySearchInsert(ret, _inputVec.back(), ret.size());
+		_binarySearchInsert(_sortedVec, _inputVec.back(), _sortedVec.size());
+}
 
-	return ret;
+void PmergeMe::mergeInsertSort(std::list<int> const & input)
+{
+	_inputLst = input;
+	size_t lstSize = _inputLst.size();
+
+	std::list<IntPair> pairs = _createPairs(input);
+	_recursiveSort(pairs, _sortPairs);
+
+	_sortedLst.clear();
+	_sortedLst.push_back(pairs.begin()->second);
+	for (std::list<IntPair>::iterator it = pairs.begin(); it != pairs.end(); ++it)
+		_sortedLst.push_back(it->first);
+
+	size_t currentPow = 2;
+	size_t jacobsthal[2] = {1, 3};
+	while (jacobsthal[0] < pairs.size())
+	{
+		for (size_t j = std::min(jacobsthal[1], pairs.size()); j != jacobsthal[0]; j--)
+		{
+			if (j - 1 < pairs.size())
+			{
+				size_t endRange = pow(2, currentPow) - 1;
+				endRange = std::min(endRange, _sortedLst.size() - 1);
+				std::list<IntPair>::iterator curr = pairs.begin();
+				std::advance(curr, j - 1);
+				_binarySearchInsert(_sortedLst, curr->second, endRange);
+			}
+		}
+		size_t nextJacobsthal = jacobsthal[0] * 2 + jacobsthal[1];
+		jacobsthal[0] = jacobsthal[1];
+		jacobsthal[1] = nextJacobsthal;
+		++currentPow;
+	}
+
+	if (lstSize % 2 == 1)
+		_binarySearchInsert(_sortedLst, _inputLst.back(), _sortedLst.size());
 }
 
 void	PmergeMe::startTimer()
@@ -79,7 +129,42 @@ double	PmergeMe::getTime() const
 	return static_cast<double>(_afterTime - _beforeTime) / CLOCKS_PER_SEC * 1e6;
 }
 
+std::vector<int> PmergeMe::getInputVec() const
+{
+	return _inputVec;
+}
+
+std::list<int> PmergeMe::getInputLst() const
+{
+	return _inputLst;
+}
+
+std::vector<int> PmergeMe::getSortedVec() const
+{
+	return _sortedVec;
+}
+
+std::list<int> PmergeMe::getSortedLst() const
+{
+	return _sortedLst;
+}
+
+int PmergeMe::getSize() const
+{
+	return std::max(_inputLst.size(), _inputVec.size());
+}
+
 // private
+
+void	PmergeMe::_recursiveSort(std::vector<IntPair> & pairs, bool (*compare)(const IntPair, const IntPair))
+{
+	std::sort(pairs.begin(), pairs.end(), compare);
+}
+
+void	PmergeMe::_recursiveSort(std::list<IntPair> & pairs, bool (*compare)(const IntPair, const IntPair))
+{
+	pairs.sort(compare);
+}
 
 bool PmergeMe::_sortPairs(IntPair const pair1, IntPair const pair2)
 {
