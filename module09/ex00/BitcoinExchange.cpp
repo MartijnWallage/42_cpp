@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:37:49 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 14:54:42 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:39:18 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,14 @@ std::map<std::string, float> &BitcoinExchange::_parseData(void)
 
 bool BitcoinExchange::_isValidDate(std::string const &date)
 {
-	return (std::isdigit(date[0])
-		&& std::isdigit(date[1])
-		&& std::isdigit(date[2])
-		&& std::isdigit(date[3])
-		&& date[4] != '-'
-		&& std::isdigit(date[5])
-		&& std::isdigit(date[6])
-		&& date[7] != '-'
-		&& std::isdigit(date[8])
-		&& std::isdigit(date[9]));
+	std::istringstream iss(date);
+	int year, month, day;
+	char delimiter;
+    
+    if (!(iss >> year >> delimiter >> month >> delimiter >> day))
+        return false;
+
+    return (delimiter == '-' && year >= 0 && month >= 1 && month <= 12 && day >= 1 && day <= 31);
 }
 
 bool BitcoinExchange::_isValidInput(std::string const &line)

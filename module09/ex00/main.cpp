@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:37:54 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/24 14:43:53 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:21:31 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,6 @@ int main(int argc, char *argv[])
 		std::cerr << "Error: could not open file" << std::endl;
 		return 1;
 	}
-
-	/* 	std::cout << "Data map:" << std::endl;
-		for (std::map<std::string, float>::iterator it = dataMap.begin(); it != dataMap.end(); ++it)
-		{
-			std::cout << "date: " << it->first << "value: " << it->second << std::endl;
-		}
-		std::cout << "Input map:" << std::endl;
-		for (std::map<std::string, float>::iterator it = inputMap.begin(); it != inputMap.end(); ++it)
-		{
-			std::cout << "date: " << it->first << "value: " << it->second << std::endl;
-		} */
 
 	try
 	{
