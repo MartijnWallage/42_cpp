@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:08:03 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/30 13:17:56 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/30 13:20:01 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,8 @@ std::list<IntPair> PmergeMe::_createPairs(std::list<int> const & )
 void PmergeMe::_binarySearchInsert(std::vector<int> &chain, int value, int endRange)
 {
 	std::vector<int>::iterator low = chain.begin();
-	std::vector<int>::iterator high = chain.begin() + endRange;
+	std::vector<int>::iterator high = chain.begin();
+	std::advance(high, endRange);
 	while (low != high)
 	{
 		std::vector<int>::iterator mid = low;
