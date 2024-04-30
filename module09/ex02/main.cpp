@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:07:59 by mwallage          #+#    #+#             */
-/*   Updated: 2024/04/30 14:23:27 by mwallage         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:52:25 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,6 @@ int main(int argc, char *argv[])
 		printMergeVec(merge);
 		std::cout << "Time to process a range of " << merge.getSize() << " elements with std::vector : ";
 		std::cout << std::fixed << std::setprecision(1) << merge.getTime() << " us" << std::endl;
-
-		PmergeMe merge2;
-		merge2.startTimer();
-		merge2.mergeInsertSort(unsortedVec);
-		merge2.stopTimer();
-		std::cout << "Time to process a range of " << merge.getSize() << " elements with std::vector : ";
-		std::cout << std::fixed << std::setprecision(1) << merge.getTime() << " us" << std::endl;
 	}
 
 	{
@@ -108,14 +101,6 @@ int main(int argc, char *argv[])
 		merge.startTimer();
 		merge.mergeInsertSort(unsortedLst);
 		merge.stopTimer();
-		printMergeLst(merge);
-		std::cout << "Time to process a range of " << merge.getSize() << " elements with std::list : ";
-		std::cout << std::fixed << std::setprecision(1) << merge.getTime() << " us" << std::endl;
-
-		PmergeMe merge2;
-		merge2.startTimer();
-		merge2.mergeInsertSort(unsortedLst);
-		merge2.stopTimer();
 		std::cout << "Time to process a range of " << merge.getSize() << " elements with std::list : ";
 		std::cout << std::fixed << std::setprecision(1) << merge.getTime() << " us" << std::endl;
 	}
